@@ -1,0 +1,54 @@
+# Meeting Minutes
+
+## Meeting Details
+
+- **Project:** SkillsTrack Learner Support Portal
+- **Date:**  August 2026
+- **Time:** 
+- **Location:** [31 Umgazi Road]
+- **Attendees:** [Rixongile Maluleke, Sindile Sekgobela, ze'Khethelo Dlamini]
+- **Minute Taker:** [Sindile Sekgobela]
+
+## Agenda
+
+1. Discussing roles.
+2. Planning how are we going to work on the project.
+3. Deciding on the tools we are going to use and planning for the project. 
+
+## Discussion
+
+### 1. Project Requirements
+The team discussed the requirements for the Skills Track Learner Support Portal, including the need for a dashboard, task manager, support bookings, progress report, learning resources, and a coding mini-game. The team also discussed the use of FireBase for authentication and data storage, and GitHub for version control. The team agreed to use HTML, CSS, and JavaScript for the application development.
+
+### 2. Application Features
+The team discussed the dashboard, task manager, support bookings, progress tracking, learning resources, and coding mini-game.
+
+### 3. Firebase
+The team discussed using Firebase Authentication for user accounts and Firebase Realtime Database for storing application data.
+
+### 4. GitHub
+The team agreed to use GitHub for version control and collaboration. Changes will be made through branches and committed regularly.
+
+## Decisions Made
+
+- The application will use HTML, CSS and JavaScript.
+- Firebase will be used for authentication and database storage.
+- GitHub will be used for version control.
+- The application will include a task manager and support-booking system.
+- A coding mini-game will be included.
+
+## Action Items
+
+| Task | Person Responsible | Deadline | Status |
+|---|---|---|---|
+| Create initial HTML structure | [Name] | [Date] | Not Started |
+| Design Firebase structure | [Name] | [Date] | Not Started |
+| Create GitHub repository | [Name] | [Date] | Not Started |
+| Design dashboard | [Name] | [Date] | Not Started |
+| Research mini-game library | [Name] | [Date] | Not Started |
+
+## Next Meeting
+
+- **Date:** [Date]
+- **Time:** [Time]
+- **Main topic:** Review development progress
