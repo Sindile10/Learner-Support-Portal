@@ -18,7 +18,7 @@ If Email Entered = Registered Email THEN
  
    If PasswordEntered = PasswordCreated THEN
  
-   Display “welcome”
+   Display “Welcome”
  
 ELSE
  
@@ -39,7 +39,6 @@ RETURN "Name and Surname are required"
 
 END IF 
 
- 
 
 IF dateOfBirth IS EMPTY THEN  
 
@@ -53,14 +52,12 @@ RETURN "Email is required"
 
 END IF  
 
- 
 
 IF EMAIL does not match RETURN then 
 
 RETURN "Please enter a valid email address" 
 
 END IF  
-
  
 
 IF password IS EMPTY  
@@ -68,7 +65,6 @@ IF password IS EMPTY
 RETURN "Please create your password" 
 
 END IF  
-
  
 
 IF LENGTH(password) <8 THEN 
@@ -80,7 +76,6 @@ END IF
 IF password DOES NOT CONTAIN [0-9] THEN  
 
 RETURN "password must include at least 1 number " 
-
  
 
 END IF  
@@ -90,7 +85,6 @@ IF password DOES NOT CONTAIN [special characters] THEN
 RETURN "Password must include at least 1 special character" 
 
 END IF 
-
  
 
 RETURN null  
@@ -104,7 +98,6 @@ SAVE {name,surname,date of birth} to Firestore under user ID}
 SEND verification email 
 
 Show  "Sign-up Successfull" 
-
  
 
 ELSE  
