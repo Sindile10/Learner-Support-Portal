@@ -1,0 +1,71 @@
+# SkillsTrack Training Centre supports
+
+## Dashboard - Home page
+
+- As soon as you log in, you will see:
+    Total Tasks: 
+    Completed:  
+    Outstanding: 
+    Progress: 
+- The numbers are calculated live from your tasks/{taskId} in Firebase Realtime Database.
+
+## Manage My Tasks - CRUD
+
+- You will have 4 basic things you can do with any task in your portal.
+- It’s like a to-do list for your course, but saved in Firebase. 
+
+The CRUD
+
+### C = Create - Add a new task
+
+- You click "Add Task" and fill in:
+1. Title: "E.g Complete Array Exercise
+2. Due Date: 15 Aug
+3. Priority: High, category: JavaScript
+
+### R = Read - View/see your tasks.
+
+- The Dashboard and Task List pull all your tasks where[userId/user name] from Firebase and display them.
+- You can also search, filter, or sort using JavaScript array methods:
+1. filter() = show only "outstanding/completed" tasks.
+2. sort () = sort by (dueDate/Date). "Show me all my high priority tasks due this week.
+
+### U = Update - Change/edit a task
+
+- You can click on a task and edit the title, due date, priority, or category.
+- Dashboard numbers like Progress % recalculate automatically.
+
+### D = Delete - Remove a task
+
+- The task you are deleting will be removed from taskId in Firebase.
+- The Dashboard numbers like Progress % recalculate automatically after deletion.
+
+## Book Support
+
+- You are stuck on a function. You can go to "Book Support" and fill out the form: topic, notes. 
+- When you submit, it saves to bookings/{bookingId} with status: Pending.
+- When your assessor sees it, it will update to "Confirmed". Then you will get your status feedback.
+
+## Play a Mini Game
+
+- When you open "Resources" You can play a mini-game
+- To be told……
+
+## Your Preferences Stick
+
+- You can switch to Dark Mode, as light mode is the default. 
+- That choice is saved in a cookie, so next time you log in, it remembers.
+
+## Print Summary
+
+- End of week: You can click "Print Progress Summary.
+- It will create a PDF of your progress, taska complited, and your bookings. You can save it or print it.
+
+## Data Safety
+
+- Everything you do uses Firebase REST API: GET, POST, PATCH, DELETE.
+- Firebase rules make sure you can only read/write your own userId data. No public write access.
+
+## Log out
+
+- You can log out of your account, and it will take you back to the login page.

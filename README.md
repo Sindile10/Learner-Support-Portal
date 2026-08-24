@@ -150,9 +150,9 @@ Game results can be stored in Firebase, including:
 
 | Area                   | Technology                                     |
 | ---------------------- | ---------------------------------------------- |
-| Structure              | HTML5                                          |
-| Styling                | CSS3                                           |
-| Application Logic      | JavaScript ES6+                                |
+| Structure              | HTML                                           |
+| Styling                | CSS                                            |
+| Application Logic      | JavaScript                                 |
 | Database               | Firebase Realtime Database                     |
 | Authentication         | Firebase Authentication                        |
 | REST Communication     | Firebase Realtime Database REST API            |
@@ -201,13 +201,6 @@ scores/
     duration
     completedAt
 
-resources/
-  {resourceId}/
-    title
-    type
-    url
-    description
-```
 
 The structure may be adapted with assessor approval where necessary.
 
@@ -217,11 +210,11 @@ The application documents and demonstrates REST API communication with Firebase 
 
 The required operations include:
 
-* `GET` — retrieve data.
-* `POST` — create new records.
-* `PUT` — replace existing records.
-* `PATCH` — update selected fields.
-* `DELETE` — remove records.
+* GET — retrieve data.
+* POST — create new records.
+* PUT — replace existing records.
+* PATCH — update selected fields.
+* DELETE — remove records.
 
 All requests that access protected data must be appropriately authenticated or performed within an assessor-controlled test environment.
 
@@ -277,8 +270,7 @@ Testing is performed using:
 
 * Browser Developer Tools.
 * Console logging.
-* Breakpoints.
-* Stack traces.
+* Trace table.
 * Manual test cases.
 * Firebase testing.
 * Authentication testing.
@@ -311,7 +303,7 @@ The project demonstrates practical application of:
 * JavaScript programming.
 * DOM manipulation.
 * Events and user interaction.
-* Arrays and higher-order functions.
+* Arrays.
 * CRUD operations.
 * Firebase integration.
 * REST API communication.
@@ -320,7 +312,7 @@ The project demonstrates practical application of:
 * Client-side calculations.
 * Git and GitHub collaboration.
 * Testing and debugging.
-* JavaScript frameworks/libraries.
+* JavaScript frameworks.
 
 ## 13. Project Status
 
@@ -334,37 +326,40 @@ A possible project structure is:
 
 ```text
 skills-track-portal/
-│
-├── index.html
-├── dashboard.html
-├── tasks.html
-├── bookings.html
-├── resources.html
-├── game.html
-├── progress.html
-│
-├── css/
-│   └── style.css
-│
-├── js/
-│   ├── firebase-config.js
-│   ├── auth.js
-│   ├── tasks.js
-│   ├── bookings.js
-│   ├── dashboard.js
-│   ├── progress.js
-│   └── game.js
-│
-├── assets/
-│   ├── images/
-│   └── audio/
-│
-├── tests/
-│
-├── .github/
-│   └── workflows/
-│
-└── README.md
+- index.html
+- dashboard.html
+- tasks.html
+- bookings.html
+- resources.html
+- game.html
+- progress.html
+
+css/
+- index.css
+- dashboard.css
+- tasks.css
+- bookings.css
+- resources.css
+- game.css
+- progress.css
+js/
+- firebase-config.js
+- auth.js
+- tasks.js
+- bookings.js
+- dashboard.js
+- progress.js
+- game.js
+
+assets/
+images/
+audio/
+
+tests/
+
+.github/
+workflows/
+README.md
 ```
 
 ## 15. Security Notice
