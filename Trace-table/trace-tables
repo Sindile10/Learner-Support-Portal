@@ -1,4 +1,4 @@
-1. ## Trace Table - Login Page
+1. ## Trace Table - Login-Page
 
 | Test Case | Email Entered     | Password Entered | Email Empty? | Password Empty? | Email = Registered Email?  | Password = Password Created?  | Output                  |
 |-----------|-------------------|------------------|--------------|-----------------|----------------------------|-------------------------------|-------------------------|
@@ -9,6 +9,7 @@
 | 5         | user@gmail.com    | Empty            | FALSE        | TRUE            | -                          | -                             | Enter your passwor     |    
 
 2. ## Trace Table for Sign-In
+
 | Step | Name | Surname | Date of Birth | Email | Password | Condition / Action | Output |
 |---:|---|---|---|---|---|---|---|
 | 1 | Entered | Entered | Entered | Entered | Entered | Start `sign-in()` | — |
