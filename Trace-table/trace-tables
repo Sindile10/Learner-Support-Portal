@@ -1,32 +1,10 @@
-1. log in [
-TRACE TABLE
+1. ## Trace Table - Login Page
 
-
-LINE | EMAIL ENTERED | PASSWORD ENTERED | EMAIL EMPTY? | PASSWORD EMPTY? | EMAIL= | REGISTRATION | EMAIL? | PASSWORD= | Password email? | OUTPUT
-1    |user@gmail.com |Password123       |FALSE|FALSE|TRUE|TRUE|Welcome
-2    |user@gmail.com |Wrong123          |FALSE|FALSE|TRUE|FALSE|Incorret password
-3    |user@gmail.com |Password123       |FALSE|FALSE|FALSE|-|Email not registered
-FALSE
-FALSE
-FALSE
--
-Email not registered
-4
-empty
-Password123
-FALSE
--
--
--
- 
-Please enter your email
-5
-user@gmail.com
-Empty
-FALSE
-FALSE
--
--
-Enter your password
+| Test Case | Email Entered     | Password Entered | Email Empty? | Password Empty? | Email = Registered Email?  | Password = Password Created?  | Output                  |
+|-----------|-------------------|------------------|--------------|-----------------|----------------------------|-------------------------------|-------------------------|
+| 1         | user@gmail.com    | Password123      | FALSE        | FALSE           | TRUE                       | TRUE                          | Welcome                 |
+| 2         | user@gmail.com    | Wrong123         | FALSE        | FALSE           | TRUE                       | FALSE                         | Incorrect Password      |
+| 3         | test@gmail.com    | Password123      | FALSE        | FALSE           | FALSE                      | -                             | Email not registered    |
+| 4         | Empty             | Password123      | TRUE         | -               | -                          | -                             | Please enter your email |
+| 5         | user@gmail.com    | Empty            | FALSE        | TRUE            | -                          | -                             | Enter your passwor     |    
 
-]
