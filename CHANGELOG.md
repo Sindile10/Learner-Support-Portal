@@ -1,0 +1,1 @@
+1. The first USER UI Design was changed after we decided to use Figma instead of Canva. The new design is more interactive and allows for better collaboration. This is the first UI Design: https://www.canva.com/design/DAHRVBIphZs/t2B3UGSVR68YxBamsK2VyQ/edit 
