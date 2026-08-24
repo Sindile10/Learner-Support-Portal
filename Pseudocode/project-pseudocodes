@@ -18,7 +18,7 @@ If Email Entered = Registered Email THEN
  
    If PasswordEntered = PasswordCreated THEN
  
-   Display “welcome”
+   Display “Welcome”
  
 ELSE
  
