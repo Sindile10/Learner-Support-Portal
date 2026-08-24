@@ -1,0 +1,33 @@
+1. log in [
+PSEUDECODE FOR LOGIN PAGE
+ 
+START
+ 
+Input Email = prompt (“Enter your email”)
+Input Password = prompt (“Enter your password”)
+ 
+If Email is empty THEN
+ 
+   Display “please enter your email”
+ 
+ELSE if password is empty THEN
+ 
+  Display “enter your password”
+ 
+If Email Entered = Registered Email THEN
+ 
+   If PasswordEntered = PasswordCreated THEN
+ 
+   Display “welcome”
+ 
+ELSE
+ 
+      Display” Incorrect Password”
+ 
+   END IF
+ 
+ELSE
+ 
+     Display “Email not registered”
+ 
+END IF]
