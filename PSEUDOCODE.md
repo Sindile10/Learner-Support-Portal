@@ -1,5 +1,5 @@
 USER REGISTRATION
-
+```
 FUNCITION
 registerUser(displayName, email, password, role)
 	IF email NOT valid OR password length < 8 THEN 
