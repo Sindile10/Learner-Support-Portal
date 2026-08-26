@@ -27,7 +27,7 @@ END FUNCITION
 ```
 
 LOGIN/ SIGN IN
-
+```
 FUNCTION loginUser(email, password)
    IF fields empty THEN
      SHOW "Please fill all fields"
@@ -59,7 +59,7 @@ END FUNCTION
 ```
 
 SIGN OUT
-
+```
 FUNCTION signOutUser()
   SHOW confirmation dialog "Are you sure you want to log out..?"
   IF user clicks YES THEN 
@@ -71,7 +71,7 @@ END FUNCTION
 ```
 
 TASK CREATION - CREATE
-
+```
 FUNCTION createTsk(userId, title, dueDate, priority)
   VALIDATE: title not empty, dueDate >= today 
   IF invalid THEN SHOW error RETURN
@@ -92,7 +92,7 @@ END FUNCTION
 ```
 
 READ + DASHBOARD CALCULATIONS REQUIRED
-
+```
 FUNCTION laodDashBoard(userId)
   FETCH all task: GET /tasks
   FILTER task WHERE task.userId == currentUser.uid // array filter
@@ -118,7 +118,7 @@ END FUNCTION
 ```
 
 UPDATE Task
-
+```
 FUNCTION upDateTask(taskId, newData )
   FETCH /tasks/{taskId}
   IF task.userId != currentUser.uid THEN DENY
@@ -137,7 +137,7 @@ END FUNCTION
 ```
 
 DELETE = CONFIRMATION DIOLOG - REQUIRED
-
+```
 FUNCTION deleteTas(taskId)
   SHOW diolog "Delete this task? This cannot be undone."
   IF user confirms YES THEN 
@@ -152,7 +152,7 @@ END FUNCTION
 ```
 
 SUPPORT BOOKINGS
-
+```
 FUNCTION bookSupport(topic, preferredDate, notes)
   VALIDATE preferredDate not past, topic selected
   IF invalid SHOW error RETURN
@@ -171,7 +171,7 @@ END FUNCTION
 ```
 
 ADMIN/ASSESSOR VIEW
-
+```
 FUNCTION loadAllBookingsAsAdmin()
   IF currentUser.role != "admin"
 
@@ -193,7 +193,7 @@ END FUNCTION
 ```
 
 SEARCH, FILTER, SORT
-
+```
 FUNCTION searchAndFilter(task, searchText, categoryFilter sortBy)
   results = FILTER task WHERE title inclueds searchText
   IF categoryFilter != "all" THEN
@@ -209,7 +209,7 @@ END FUNCTION
 ```
 
 COOKIE PREFERENCE, REDIRECT, PRINT
-
+```
 FUNCTION saveThemePreferrence(theme) // password must not be saved in cookie
   SET localStorage theme = theme
   SET cookie theme = theme 
@@ -225,7 +225,7 @@ END FUNCTION
 ```
 
 ANIMATION + GAME SCORES
-
+```
 FUNCTION startBannerAnimation()
   position = 0
   SET INTERVAL every 50ms:
@@ -245,7 +245,7 @@ END FUNCTION
 ```
 
 FIREBASE REST API ENDPOINT PLAN
-
+```
 GET /users/{uid}.json?auth=TOKEN
 POST /task.json?auth=TOKEN -> returns {name: taskId}
 PUT /task/{taslId}.json?auth=TOKEN
