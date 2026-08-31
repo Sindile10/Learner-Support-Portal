@@ -1,0 +1,21 @@
+# USE CASES - Minimal for submission
+
+## Manage Tasks (CRUD)
+Actor: Learner (Primary), Assessor (Secondary)
+Flow: Login -> checkAuth() -> GET /tasks.json?auth -> filter userId==auth.uid -> Display -> Create: validate title>=3, dueDate>=today -> POST /tasks/{id} -> Read: filter(), sort() by dueDate -> Update: PATCH/PUT -> Delete: confirm() -> DELETE -> Recalc progress = (completed/total)_100
+Alt: No tasks -> "No tasks available"
+Fail: Validation fail -> block POST, Permission denied -> rules reject
+
+## Book Support
+Actor: Learner, Assessor
+Flow: http://bookings.html -> Fill topic, date, notes -> Validate -> POST /bookings/{id} status=pending -> Assessor GET /bookings.json filter status==pending -> PATCH status=approved/rejected -> Learner sees feedback
+
+## View Progress & Print
+Actor: Learner, Assessor
+Flow: http://dashboard.html -> GET tasks+bookings -> calc total=length, completed=filter(completed).length, progress=Math.round((completed/total)_100), totalHours=reduce() -> Display -> Print -> http://window.print()
+Alt: total==0 -> progress=0
+
+## Assessor PoV for all:
+1: GET tasks filter completed==false to identify outstanding work
+2: PATCH booking status to manage support
+3: View progress per learner to monitor
