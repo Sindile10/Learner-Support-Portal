@@ -1,0 +1,867 @@
+TRACE TABLE – registerUser() USER REGISTRATION 
+
+Input:
+displayName = Khethelo
+email = khethelo@gmail.com
+password = Password123
+role = learner
+
++------+-------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition    | Value                | Action / Result                             |
++------+-------------------------+----------------------+---------------------------------------------+
+|  1   | displayName             | Khethelo             | Name is stored                              |
+|  2   | email                   | khethelo@gmail.com   | Email is stored                             |
+|  3   | password                | Password123          | Password is stored                          |
+|  4   | role                    | learner              | Role is stored                              |
+|  5   | email NOT valid         | FALSE                | Email is valid, continue                    |
+|  6   | password length < 8     | FALSE                | Password is valid, continue                 |
+|  7   | TRY                     | -                    | Start registration process                  |
+|  8   | Firebase Auth           | Success              | User is created                             |
+|  9   | uid                     | UID12345             | UID is retrieved from Firebase              |
+| 10   | displayName             | Khethelo             | Added to User Object                        |
+| 11   | email                   | khethelo@gmail.com   | Added to User Object                        |
+| 12   | role                    | learner              | Added to User Object                        |
+| 13   | createdAt               | Current timestamp    | Added to User Object                        |
+| 14   | User Object             | All details          | User Object is created                      |
+| 15   | POST /user/{uid}        | UID12345             | User details are saved                      |
+| 16   | Registration            | Success              | "Registered successfully" is displayed      |
+| 17   | Redirect                | dashboard.html       | User is redirected to the dashboard        |
++------+-------------------------+----------------------+---------------------------------------------+
+
+
+TRACE TABLE – loginUser()
+
+Input:
+email = khethelo@gmail.com
+password = Password123
+User role = learner
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | email                      | khethelo@gmail.com   | Email is entered                            |
+|  2   | password                   | Password123          | Password is entered                         |
+|  3   | fields empty               | FALSE                | All fields are filled, continue             |
+|  4   | TRY                        | -                    | Start login process                         |
+|  5   | Firebase Auth              | Success              | User is signed in                           |
+|  6   | lastLogin                  | Current date         | Cookie is set                               |
+|  7   | theme                      | localStorage.theme   | User theme is stored                        |
+|  8   | Redirect                   | dashboard.html       | User is redirected to dashboard             |
+|  9   | Auth state changed        | User exists          | Authentication state is checked             |
+| 10   | uid                        | UID12345             | User ID is retrieved                        |
+| 11   | Database                  | User data found      | User information is fetched                |
+| 12   | user.role == "admin"      | FALSE                | User is not an admin                        |
+| 13   | User role                 | learner              | User is treated as a learner                |
+| 14   | Redirect                   | dashboard.html       | Learner is sent to dashboard                |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+TRACE TABLE – INVALID LOGIN
+
+Input:
+email = khethelo@gmail.com
+password = Wrong123
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | email                      | khethelo@gmail.com   | Email is entered                            |
+|  2   | password                   | Wrong123             | Incorrect password is entered                |
+|  3   | fields empty               | FALSE                | All fields are filled, continue             |
+|  4   | TRY                        | -                    | Start login process                         |
+|  5   | Firebase Auth              | Error                | Login fails                                 |
+|  6   | CATCH                     | Error caught         | Error is handled                            |
+|  7   | Error message             | Invalid credentials  | "Invalid credentials" is displayed          |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+TRACE TABLE – EMPTY FIELDS
+
+Input:
+email = ""
+password = ""
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | email                      | EMPTY                | Email field is empty                        |
+|  2   | password                   | EMPTY                | Password field is empty                     |
+|  3   | fields empty               | TRUE                 | Condition is true                           |
+|  4   | Error message              | Please fill all fields| Error message is displayed                  |
+|  5   | RETURN                    | -                    | Function stops                              |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+TRACE TABLE – checkAuthState() LOGIN/SIGN IN 
+
+Example: Admin user
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | Auth state changed         | TRUE                 | Authentication state is checked              |
+|  2   | user exists                | TRUE                 | User is logged in                           |
+|  3   | uid                        | UID67890             | User ID is retrieved                        |
+|  4   | Database                  | User data found      | User information is fetched                |
+|  5   | user.role == "admin"      | TRUE                 | User is an admin                            |
+|  6   | Redirect                   | admin.html           | Admin is sent to admin page                 |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+TRACE TABLE – checkAuthState()
+
+Example: User is not logged in
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | Auth state changed         | TRUE                 | Authentication state is checked              |
+|  2   | user exists                | FALSE                | No logged-in user is found                  |
+|  3   | Redirect                   | login.html            | User is sent to login page                  |
++------+----------------------------+----------------------+---------------------------------------------+
+
+TRACE TABLE – signOutUser()
+
+SCENARIO 1: USER CLICKS YES
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | Confirmation dialog        | Displayed             | "Are you sure you want to log out..?"       |
+|  2   | User clicks YES            | TRUE                  | User confirms logout                        |
+|  3   | IF condition              | TRUE                  | Continue with sign out                      |
+|  4   | Firebase Sign Out         | Success               | User is signed out of Firebase              |
+|  5   | Redirect                  | login.html            | User is redirected to login page            |
+|  6   | Function                  | Complete              | signOutUser() ends                           |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+SCENARIO 2: USER CLICKS NO , Sign Out 
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | Confirmation dialog        | Displayed             | "Are you sure you want to log out..?"       |
+|  2   | User clicks YES            | FALSE                 | User does not confirm logout                |
+|  3   | IF condition              | FALSE                 | Sign out process is skipped                 |
+|  4   | Firebase Sign Out         | Not executed          | User remains signed in                      |
+|  5   | Redirect                  | Not executed          | User stays on the current page              |
+|  6   | Function                  | Complete              | signOutUser() ends                           |
++------+----------------------------+----------------------+---------------------------------------------+
+
+TRACE TABLE – createTask() Task Creation - Create 
+
+SCENARIO 1: VALID TASK
+
+
+
+
++------+----------------------------+---------------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                     | Action / Result                             |
++------+----------------------------+---------------------------+---------------------------------------------+
+|  1   | userId                     | UID12345                  | User ID is received                         |
+|  2   | title                      | Complete JavaScript      | Task title is entered                       |
+|  3   | dueDate                    | 2026-09-05                | Due date is entered                         |
+|  4   | priority                   | high                      | Priority is selected                        |
+|  5   | title not empty            | TRUE                      | Title is valid, continue                    |
+|  6   | dueDate >= today           | TRUE                      | Due date is valid, continue                 |
+|  7   | Validation                 | VALID                     | Task can be created                         |
+|  8   | userId                     | UID12345                  | User ID is added to Task Object             |
+|  9   | title                      | Complete JavaScript      | Title is added to Task Object               |
+| 10   | category                   | Not provided              | Category is added to Task Object            |
+| 11   | dueDate                    | 2026-09-05                | Due date is added to Task Object            |
+| 12   | priority                   | high                      | Priority is added to Task Object            |
+| 13   | completed                  | false                     | Task is marked as incomplete                |
+| 14   | createdAt                  | Current timestamp         | Creation time is added                      |
+| 15   | Task Object                | All task details          | Task Object is created                      |
+| 16   | POST /task/{autoID}       | Success                   | Task is saved to the database               |
+| 17   | DOM                        | Refreshed                 | Updated task list is displayed              |
+| 18   | Function                   | Complete                  | createTask() ends                           |
++------+----------------------------+---------------------------+---------------------------------------------+
+
+
+SCENARIO 2: INVALID TASK – EMPTY TITLE
+
+
+
+
++------+----------------------------+---------------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                     | Action / Result                             |
++------+----------------------------+---------------------------+---------------------------------------------+
+|  1   | userId                     | UID12345                  | User ID is received                         |
+|  2   | title                      | EMPTY                     | No task title is entered                    |
+|  3   | dueDate                    | 2026-09-05                | Due date is entered                         |
+|  4   | priority                   | high                      | Priority is selected                        |
+|  5   | title not empty            | FALSE                     | Title is invalid                             |
+|  6   | Validation                 | INVALID                   | Task cannot be created                      |
+|  7   | Error message              | Invalid input             | Error is displayed                          |
+|  8   | RETURN                     | -                         | Function stops                               |
++------+----------------------------+---------------------------+---------------------------------------------+
+
+
+SCENARIO 3: INVALID TASK – DUE DATE BEFORE TODAY
+
+
+
++------+----------------------------+---------------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                     | Action / Result                             |
++------+----------------------------+---------------------------+---------------------------------------------+
+|  1   | userId                     | UID12345                  | User ID is received                         |
+|  2   | title                      | Complete JavaScript      | Task title is entered                       |
+|  3   | dueDate                    | 2026-08-20                | Due date is entered                         |
+|  4   | priority                   | medium                    | Priority is selected                        |
+|  5   | title not empty            | TRUE                      | Title is valid                              |
+|  6   | dueDate >= today           | FALSE                     | Due date is in the past                     |
+|  7   | Validation                 | INVALID                   | Task cannot be created                      |
+|  8   | Error message              | Invalid input             | Error is displayed                          |
+|  9   | RETURN                     | -                         | Function stops                               |
++------+----------------------------+---------------------------+---------------------------------------------+
+
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | userId                     | UID12345             | User ID is received                         |
+|  2   | GET /tasks                 | 4 tasks              | All tasks are fetched                       |
+|  3   | task.userId == userId      | TRUE/FALSE            | Tasks are filtered by current user          |
+|  4   | tasks                     | Task 1, 2, 3          | 3 tasks belong to current user              |
+|  5   | total                     | 3                    | Total number of tasks is calculated         |
+|  6   | completedList              | Task 1               | Completed tasks are filtered                |
+|  7   | completed                  | 1                    | Number of completed tasks is calculated     |
+|  8   | outstanding                | 2                    | total - completed = 2                       |
+|  9   | progress                   | 33.33%               | (1 / 3) x 100 = 33.33%                     |
+| 10   | taskTotals                 | {3, 1, 2}            | Totals are prepared for dashboard           |
+| 11   | progressBar                | 33.33%               | Progress bar is set                         |
+| 12   | taskTitles                | Assignment, Project, | Task titles are extracted using MAP         |
+|      |                            | Study for Test       |                                             |
+| 13   | highPriority               | Task 1, Task 3       | High-priority tasks are filtered            |
+| 14   | FOR EACH task              | Task 1               | DOM element is created                      |
+| 15   | APPEND                     | Task 1               | Task added to task container                |
+| 16   | FOR EACH task              | Task 2               | DOM element is created                      |
+| 17   | APPEND                     | Task 2               | Task added to task container                |
+| 18   | FOR EACH task              | Task 3               | DOM element is created                      |
+| 19   | APPEND                     | Task 3               | Task added to task container                |
+| 20   | Dashboard                 | Updated              | Tasks and progress are displayed            |
++------+----------------------------+----------------------+---------------------------------------------+
+
+UPDATE TASK
+TRACE TABLE – updateTask(taskId, newData)
+
+Example Input:
+taskId = TASK001
+currentUser.uid = UID12345
+
+newData:
+title = "Complete JavaScript Assignment"
+priority = "high"
+dueDate = "2026-09-05"
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | taskId                     | TASK001              | Task ID is received                         |
+|  2   | currentUser.uid            | UID12345             | Current user's ID is retrieved              |
+|  3   | newData                    | Title, priority,     | New task information is received            |
+|      |                            | dueDate              |                                             |
+|  4   | GET /tasks/{taskId}        | TASK001              | Task is fetched from database               |
+|  5   | task.userId                | UID12345             | Task owner's ID is checked                  |
+|  6   | task.userId != currentUser | FALSE                | User owns the task, access is allowed       |
+|  7   | PATCH /task/{taskId}       | Success              | Task is updated with newData                |
+|  8   | SHOW message               | Task updated         | Confirmation message is displayed           |
+|  9   | REFRESH list               | Updated               | Task list is refreshed                      |
+| 10   | Function                   | Complete              | updateTask() ends                           |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+SCENARIO 2: USER DOES NOT OWN THE TASK
+
+Example:
+task.userId = UID99999
+currentUser.uid = UID12345
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | taskId                     | TASK001              | Task ID is received                         |
+|  2   | currentUser.uid            | UID12345             | Current user's ID is retrieved              |
+|  3   | GET /tasks/{taskId}        | TASK001              | Task is fetched from database               |
+|  4   | task.userId                | UID99999             | Task belongs to another user                |
+|  5   | task.userId != currentUser | TRUE                 | Access is denied                            |
+|  6   | DENY                      | TRUE                 | User cannot update the task                 |
+|  7   | PATCH                     | Not executed         | Task is not changed                         |
+|  8   | Function                  | Complete              | updateTask() ends                           |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+TRACE TABLE – toggleComplete(taskId)
+
+Example Input:
+taskId = TASK001
+completed = false
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | taskId                     | TASK001              | Task ID is received                         |
+|  2   | GET task                   | TASK001              | Task is retrieved                           |
+|  3   | completed status           | false                | Current completion status is checked        |
+|  4   | NOT completed              | NOT false = true     | Completion status is reversed               |
+|  5   | newValue                   | true                 | New completion value is set                 |
+|  6   | PATCH /task/{taskId}       | {completed: true}    | Task is updated in database                 |
+|  7   | Function                   | Complete              | toggleComplete() ends                       |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+SECOND TOGGLE EXAMPLE:
+
+Starting value:
+completed = true
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | taskId                     | TASK001              | Task ID is received                         |
+|  2   | GET task                   | TASK001              | Task is retrieved                           |
+|  3   | completed status           | true                 | Current completion status is checked        |
+|  4   | NOT completed              | NOT true = false     | Completion status is reversed               |
+|  5   | newValue                   | false                 | New completion value is set                 |
+|  6   | PATCH /task/{taskId}       | {completed: false}   | Task is updated in database                 |
+|  7   | Function                   | Complete              | toggleComplete() ends                       |
++------+----------------------------+----------------------+---------------------------------------------+
+
+DELETE = CONFIRMATION DIALOG -REQUIRED 
+TRACE TABLE – deleteTask(taskId)
+
+SCENARIO 1: USER CONFIRMS DELETE
+
+Example Input:
+taskId = TASK001
+Task title = Complete JavaScript Assignment
+completed = false
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | taskId                     | TASK001              | Task ID is received                         |
+|  2   | Dialog                     | Displayed            | "Delete this task? This cannot be undone."  |
+|  3   | User confirms YES          | TRUE                 | User confirms the deletion                  |
+|  4   | IF condition               | TRUE                 | Continue with deletion                      |
+|  5   | DELETE /task/{taskId}      | TASK001              | DELETE request is sent to REST API          |
+|  6   | REST DELETE                | Success              | Task is deleted from the database           |
+|  7   | DOM element                | TASK001              | Task element is removed from the page      |
+|  8   | Dashboard tools            | Recalculated         | Dashboard statistics are updated            |
+|  9   | Progress report            | Updated              | Progress is recalculated                    |
+| 10   | Progress bar               | Updated              | Progress bar reflects new progress          |
+| 11   | Function                   | Complete             | deleteTask() ends                           |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+SCENARIO 2: USER CANCELS DELETE
+
+Example Input:
+taskId = TASK001
+Task title = Complete JavaScript Assignment
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | taskId                     | TASK001              | Task ID is received                         |
+|  2   | Dialog                     | Displayed            | "Delete this task? This cannot be undone."  |
+|  3   | User confirms YES          | FALSE                 | User chooses to cancel                     |
+|  4   | IF condition               | FALSE                 | Deletion is skipped                         |
+|  5   | DELETE request             | Not executed         | Task remains in database                   |
+|  6   | DOM element                | Not removed          | Task remains on the page                   |
+|  7   | Dashboard tools            | Not recalculated     | Dashboard remains unchanged                 |
+|  8   | CANCEL                     | TRUE                 | Delete operation is cancelled               |
+|  9   | Function                   | Complete              | deleteTask() ends                           |
++------+----------------------------+----------------------+---------------------------------------------+
+
+SUPPORT BOOKINGS
+TRACE TABLE – bookSupport(topic, preferredDate, notes)
+
+SCENARIO 1: VALID BOOKING
+
+Example Input:
+topic = JavaScript Help
+preferredDate = 2026-09-05
+notes = "I need help with my assignment."
+currentUser.uid = UID12345
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | topic                      | JavaScript Help      | Support topic is selected                   |
+|  2   | preferredDate              | 2026-09-05           | Preferred date is selected                  |
+|  3   | notes                      | Assignment help      | Additional notes are entered                |
+|  4   | topic selected             | TRUE                 | Topic is valid, continue                    |
+|  5   | preferredDate not past     | TRUE                 | Date is valid, continue                     |
+|  6   | Validation                 | VALID                | Booking can be created                      |
+|  7   | userId                     | UID12345             | Current user's ID is added                  |
+|  8   | topic                      | JavaScript Help      | Topic is added to Booking Object            |
+|  9   | preferredDate              | 2026-09-05           | Date is added to Booking Object             |
+| 10   | notes                      | Assignment help      | Notes are added to Booking Object            |
+| 11   | status                     | pending              | Booking status is set to pending             |
+| 12   | Booking Object             | All details          | Booking Object is created                   |
+| 13   | POST /bookings/{bookingId}| Success              | Booking is saved to the database             |
+| 14   | Message                    | Booking pending      | "Booking pending approval" is displayed     |
+| 15   | Function                   | Complete             | bookSupport() ends                          |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+SCENARIO 2: INVALID BOOKING – NO TOPIC SELECTED
+
+Example Input:
+topic = EMPTY
+preferredDate = 2026-09-05
+notes = "I need help."
+currentUser.uid = UID12345
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | topic                      | EMPTY                | No support topic is selected                |
+|  2   | preferredDate              | 2026-09-05           | Preferred date is selected                  |
+|  3   | notes                      | I need help          | Notes are entered                           |
+|  4   | topic selected             | FALSE                | Topic is invalid                            |
+|  5   | Validation                 | INVALID              | Booking cannot be created                   |
+|  6   | Error message              | Invalid input        | Error message is displayed                  |
+|  7   | RETURN                     | -                    | Function stops                              |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+SCENARIO 3: INVALID BOOKING – DATE IS IN THE PAST
+
+Example Input:
+topic = JavaScript Help
+preferredDate = 2026-08-20
+notes = "I need help with my assignment."
+currentUser.uid = UID12345
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | topic                      | JavaScript Help      | Support topic is selected                   |
+|  2   | preferredDate              | 2026-08-20           | Date is selected                            |
+|  3   | notes                      | Assignment help      | Notes are entered                           |
+|  4   | topic selected             | TRUE                 | Topic is valid                              |
+|  5   | preferredDate not past     | FALSE                | Date is in the past                        |
+|  6   | Validation                 | INVALID              | Booking cannot be created                   |
+|  7   | Error message              | Invalid input        | Error message is displayed                  |
+|  8   | RETURN                     | -                    | Function stops                              |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+FINAL BOOKING OBJECT – VALID SCENARIO
+
+userId = UID12345
+topic = JavaScript Help
+preferredDate = 2026-09-05
+notes = "I need help with my assignment."
+status = "pending"
+
+SUPPORT BOOKINGS 
+TRACE TABLE – bookSupport(topic, preferredDate, notes)
+
+SCENARIO: VALID BOOKING
+
+Example Input:
+topic = JavaScript Help
+preferredDate = 2026-09-05
+notes = I need help with my assignment.
+currentUser.uid = UID12345
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | topic                      | JavaScript Help      | Topic is selected                           |
+|  2   | preferredDate              | 2026-09-05           | Preferred date is selected                  |
+|  3   | notes                      | Assignment help      | Notes are entered                           |
+|  4   | topic selected             | TRUE                 | Topic is valid, continue                    |
+|  5   | preferredDate not past     | TRUE                 | Date is valid, continue                     |
+|  6   | Validation                 | VALID                | Booking can be created                      |
+|  7   | currentUser.uid            | UID12345             | User ID is retrieved                        |
+|  8   | userId                     | UID12345             | User ID is added to Booking Object          |
+|  9   | topic                      | JavaScript Help      | Topic is added to Booking Object            |
+| 10   | preferredDate              | 2026-09-05           | Date is added to Booking Object             |
+| 11   | notes                      | Assignment help      | Notes are added to Booking Object           |
+| 12   | status                     | pending              | Booking status is set to pending            |
+| 13   | Booking Object             | All details          | Booking Object is created                   |
+| 14   | POST /bookings/{bookingId} | Success              | Booking is saved to the database            |
+| 15   | SHOW message               | Booking pending      | "Booking pending approval" is displayed     |
+| 16   | Function                   | Complete             | bookSupport() ends                          |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+FINAL BOOKING OBJECT:
+
+userId = UID12345
+topic = JavaScript Help
+preferredDate = 2026-09-05
+notes = I need help with my assignment.
+status = pending
+
+ADMIN/ASSESSOR VIEW 
+TRACE TABLE – loadAllBookingsAsAdmin()
+
+SCENARIO: ADMIN LOADS AND SEARCHES BOOKINGS
+
+Example Input:
+currentUser.role = admin
+search = "JavaScript"
+
+
+BOOKINGS:
+
+Booking 1:
+bookingId = B001
+userId = UID12345
+topic = JavaScript Help
+preferredDate = 2026-09-05
+status = pending
+
+Booking 2:
+bookingId = B002
+userId = UID67890
+topic = Database Help
+preferredDate = 2026-09-03
+status = approved
+
+Booking 3:
+bookingId = B003
+userId = UID12345
+topic = JavaScript Assignment
+preferredDate = 2026-09-08
+status = pending
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | currentUser.role           | admin                | Current user is checked                     |
+|  2   | role != "admin"            | FALSE                | User is an admin, continue                  |
+|  3   | GET /bookings              | 3 bookings           | All bookings are retrieved                 |
+|  4   | SEARCH                     | JavaScript           | Search value is entered                     |
+|  5   | topic CONTAINS search      | TRUE/FALSE            | Bookings are checked by topic               |
+|  6   | userId CONTAINS search     | TRUE/FALSE            | Bookings are checked by user ID             |
+|  7   | filtered                   | B001, B003           | Matching bookings are stored                |
+|  8   | SORT                       | preferredDate ASC    | Bookings are sorted by date                 |
+|  9   | B001 status                | pending              | Booking row is displayed                    |
+| 10   | status == "pending"        | TRUE                 | Approve/Reject buttons are shown            |
+| 11   | B003 status                | pending              | Booking row is displayed                    |
+| 12   | status == "pending"        | TRUE                 | Approve/Reject buttons are shown            |
+| 13   | Dashboard                  | Updated              | Filtered bookings are displayed             |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+TRACE TABLE – updateBookingStatus(bookingId, newStatus)
+
+SCENARIO: ADMIN APPROVES A BOOKING
+
+Example Input:
+bookingId = B001
+newStatus = approved
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | bookingId                 | B001                 | Booking ID is received                      |
+|  2   | newStatus                 | approved             | New booking status is selected              |
+|  3   | PATCH /bookings/{id}      | B001                 | PATCH request is sent                        |
+|  4   | status                    | approved             | Booking status is updated                   |
+|  5   | Database                  | Updated              | New status is saved                          |
+|  6   | Function                  | Complete              | updateBookingStatus() ends                  |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+SCENARIO: ADMIN REJECTS A BOOKING
+
+Example Input:
+bookingId = B003
+newStatus = rejected
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | bookingId                 | B003                 | Booking ID is received                      |
+|  2   | newStatus                 | rejected             | New booking status is selected              |
+|  3   | PATCH /bookings/{id}      | B003                 | PATCH request is sent                        |
+|  4   | status                    | rejected             | Booking status is updated                   |
+|  5   | Database                  | Updated              | New status is saved                          |
+|  6   | Function                  | Complete              | updateBookingStatus() ends                  |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+SCENARIO: USER IS NOT AN ADMIN
+
+Example:
+currentUser.role = learner
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | currentUser.role           | learner              | Current user's role is checked              |
+|  2   | role != "admin"            | TRUE                 | User is not an admin                        |
+|  3   | GET /bookings              | Not executed         | Access to bookings is denied                |
+|  4   | Function                   | Stop                  | Function ends                               |
++------+----------------------------+----------------------+---------------------------------------------+
+
+SEARCH,FILTER,SORT
+TRACE TABLE – searchAndFilter(task, searchText, categoryFilter, sortBy)
+
+EXAMPLE INPUT:
+
+searchText = "JavaScript"
+categoryFilter = "Programming"
+sortBy = "priority"
+
+
+TASKS:
+
+Task 1:
+title = JavaScript Assignment
+category = Programming
+dueDate = 2026-09-05
+priority = high
+
+Task 2:
+title = Database Project
+category = Database
+dueDate = 2026-09-03
+priority = medium
+
+Task 3:
+title = JavaScript Quiz
+category = Programming
+dueDate = 2026-09-02
+priority = low
+
+Task 4:
+title = JavaScript Research
+category = Research
+dueDate = 2026-09-07
+priority = high
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | searchText                | JavaScript           | Search text is entered                      |
+|  2   | categoryFilter            | Programming          | Category filter is selected                 |
+|  3   | sortBy                    | priority             | Sorting option is selected                  |
+|  4   | title includes searchText | TRUE/FALSE            | Tasks are checked for "JavaScript"          |
+|  5   | results                   | Task 1, Task 3, Task 4| Matching tasks are stored                  |
+|  6   | categoryFilter != "all"   | TRUE                 | Category filtering is required              |
+|  7   | category == Programming   | TRUE/FALSE            | Tasks are checked by category               |
+|  8   | results                   | Task 1, Task 3        | Programming tasks remain                    |
+|  9   | sortBy == "dueDate"       | FALSE                | Due-date sorting is skipped                 |
+| 10   | sortBy == "priority"      | TRUE                 | Priority sorting is performed               |
+| 11   | Priority order            | high > medium > low  | Tasks are sorted by priority                |
+| 12   | results                   | Task 1, Task 3        | Final sorted results are prepared           |
+| 13   | DISPLAY results           | Task 1, Task 3        | Results are displayed to the user           |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+FINAL RESULTS:
+
+1. JavaScript Assignment
+   Category: Programming
+   Due Date: 2026-09-05
+   Priority: HIGH
+
+2. JavaScript Quiz
+   Category: Programming
+   Due Date: 2026-09-02
+   Priority: LOW
+
+   COOKIE PREFERENCE, REDIRECT, PRINT
+   TRACE TABLE – saveThemePreference(theme)
+
+Example Input:
+theme = "dark"
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | theme                      | dark                 | Theme value is received                     |
+|  2   | localStorage.theme         | dark                 | Theme is saved to localStorage              |
+|  3   | cookie theme               | dark                 | Theme is saved in a cookie                  |
+|  4   | Password                   | NOT SAVED            | Password is not stored in the cookie        |
+|  5   | body class                 | dark                 | Dark theme is applied to the page           |
+|  6   | Function                   | Complete             | saveThemePreference() ends                  |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+TRACE TABLE – onLoginSuccess()
+
+Example:
+Login = Successful
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | Login status               | Successful           | User successfully logs in                   |
+|  2   | REDIRECT                   | dashboard.html       | User is redirected to dashboard             |
+|  3   | Function                   | Complete              | onLoginSuccess() ends                       |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+TRACE TABLE – printProgressSummary()
+
+Example:
+User clicks "Print Progress Summary"
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | User action                | Print clicked        | User requests progress summary              |
+|  2   | CALL window.print()        | Executed             | Browser print window is opened              |
+|  3   | Print summary              | Displayed            | Progress summary is prepared for printing   |
+|  4   | Function                   | Complete             | printProgressSummary() ends                 |
++------+----------------------------+----------------------+---------------------------------------------+
+
+ANIMATION AND GAME SCORES 
+TRACE TABLE – startBannerAnimation()
+
+Example:
+position starts at 0
+Interval = every 50ms
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | position                  | 0                    | Position is set to 0                        |
+|  2   | SET INTERVAL              | 50ms                 | Animation runs every 50ms                   |
+|  3   | position++                | 1                    | Position increases by 1                     |
+|  4   | banner.style.left         | 1                    | Banner moves to position 1                  |
+|  5   | position > 100            | FALSE                | Position has not reached the limit          |
+|  6   | position++                | 2                    | Position increases by 1                     |
+|  7   | banner.style.left         | 2                    | Banner moves to position 2                  |
+|  8   | position > 100            | FALSE                | Position has not reached the limit          |
+|  9   | position++                | 101                   | Position increases past 100                 |
+| 10   | banner.style.left         | 101                  | Banner moves to position 101                |
+| 11   | position > 100            | TRUE                 | Position is greater than 100                |
+| 12   | position = 0              | 0                    | Banner returns to starting position         |
+| 13   | SET INTERVAL              | Continues            | Animation repeats every 50ms                |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+TRACE TABLE – saveGameScore(score, duration)
+
+Example Input:
+score = 850
+duration = 120
+currentUser.uid = UID12345
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | score                      | 850                  | Player's score is received                  |
+|  2   | duration                   | 120 seconds          | Game duration is received                   |
+|  3   | currentUser.uid            | UID12345             | Current user's ID is retrieved              |
+|  4   | userId                     | UID12345             | User ID is added to Score Object            |
+|  5   | score                      | 850                  | Score is added to Score Object              |
+|  6   | duration                   | 120 seconds          | Duration is added to Score Object           |
+|  7   | completedAt                | Current timestamp    | Completion time is added                    |
+|  8   | Score Object               | All details          | Score Object is created                     |
+|  9   | POST /scores/{scoreId}     | Success              | Score is saved to the database              |
+| 10   | Function                   | Complete             | saveGameScore() ends                        |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+FINAL SCORE OBJECT:
+
+userId = UID12345
+score = 850
+duration = 120 seconds
+completedAt = Current timestamp
+
+FIRETRACE TABLE – FIREBASE REST API REQUESTS
+
+Example:
+uid = UID12345
+TOKEN = ABC123
+taskId = TASK001
+bookingId = BOOK001
+
+
++------+-----------------------------------------------+----------------------+---------------------------------------------+
+| Step | API Request                                   | Value                | Action / Result                             |
++------+-----------------------------------------------+----------------------+---------------------------------------------+
+|  1   | GET /users/{uid}.json?auth=TOKEN              | UID12345             | User information is requested              |
+|  2   | Firebase Response                             | User data            | User information is returned               |
+|  3   | POST /task.json?auth=TOKEN                    | Task details         | New task is sent to Firebase               |
+|  4   | Firebase Response                             | {name: taskId}       | Firebase returns the generated task ID     |
+|  5   | PUT /task/{taskId}.json?auth=TOKEN            | TASK001              | Existing task is replaced/updated          |
+|  6   | Firebase Response                             | Success              | Task is updated successfully               |
+|  7   | PATCH /bookings/{bookingId}.json?auth=TOKEN   | BOOK001              | Booking information is updated             |
+|  8   | Firebase Response                             | Success              | Booking is updated successfully            |
+|  9   | DELETE /task/{taskId}.json?auth=TOKEN         | TASK001              | Task is selected for deletion              |
+| 10   | Firebase Response                             | Success              | Task is deleted from Firebase              |
+| 11   | GET /bookings.json                            | UID12345             | Bookings are requested for the user        |
+| 12   | orderBy="userId"                              | userId               | Bookings are sorted/checked by user ID     |
+| 13   | equalTo="{uid}"                               | UID12345             | Only user's bookings are returned          |
+| 14   | Firebase Response                             | Matching bookings    | User's bookings are displayed              |
++------+-----------------------------------------------+----------------------+---------------------------------------------+
+
+
+DETAILED TRACE – POST TASK
+
+Input:
+title = JavaScript Assignment
+dueDate = 2026-09-05
+priority = high
+userId = UID12345
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | Task details               | All details          | Task information is prepared               |
+|  2   | POST /task.json            | Task details         | Task is sent to Firebase                    |
+|  3   | Firebase                   | Success              | Task is created                             |
+|  4   | Response                   | taskId = TASK001     | Firebase returns generated task ID          |
+|  5   | taskId                     | TASK001              | ID is stored for future use                |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
+DETAILED TRACE – GET USER BOOKINGS
+
+Input:
+uid = UID12345
+
+
++------+----------------------------+----------------------+---------------------------------------------+
+| Step | Variable / Condition       | Value                | Action / Result                             |
++------+----------------------------+----------------------+---------------------------------------------+
+|  1   | uid                        | UID12345             | Current user's ID is received               |
+|  2   | GET /bookings.json         | Request sent         | All bookings are requested                  |
+|  3   | orderBy                   | userId               | Bookings are searched using userId          |
+|  4   | equalTo                   | UID12345             | Only matching user bookings are selected    |
+|  5   | Firebase Response          | Matching bookings    | User's bookings are returned                |
+|  6   | Display                    | Bookings             | Bookings can be displayed to the user      |
++------+----------------------------+----------------------+---------------------------------------------+
+
+
