@@ -1,0 +1,23 @@
+{
+  "name": "learner-support-portal",
+  "version": "1.0.0",
+  "description": "A browser-based Learner Support Portal designed to provide learners and assessors with a central platform for managing learning tasks, support bookings, progress, learning resources, and coding practice.",
+  "homepage": "https://github.com/Sindile10/Learner-Support-Portal#readme",
+  "bugs": {
+    "url": "https://github.com/Sindile10/Learner-Support-Portal/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sindile10/Learner-Support-Portal.git"
+  },
+  "license": "ISC",
+  "author": "Sindile Sekgobela, Rixongile Maluleke, and ze'Khethelo Dlamini",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
