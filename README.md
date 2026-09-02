@@ -1,331 +1,247 @@
-# SkillsTrack Learner Support Portal
+# Learning Hub
 
-A browser-based Learner Support Portal developed for **SkillsTrack Training Centre** to provide learners and assessors with a single platform for managing learning tasks, support bookings, progress, learning resources, and coding practice.
+A browser-based Learner Support Portal designed to provide learners and assessors with a central platform for managing learning tasks, support bookings, progress, learning resources, and coding practice.
 
-## 1. Project Overview
+---
 
-SkillsTrack Training Centre currently manages learner goals, tasks, support bookings, and progress using separate documents and messages. This makes it difficult for assessors to identify outstanding work, determine which learners require support, and monitor learner progress.
+## README.md Flow Structure
 
-The Learner Support Portal addresses this problem by providing a centralised web application where authenticated learners can manage their learning activities and access support services.
+1. Project Description and Purpose
+2. Client Objectives
+3. User Roles
+4. Core Features
+5. Team Members and Roles
+6. Technologies Used
+7. Project Structure
+8. Firebase Data Structure
+9. Features Completed
+10. GitHub Collaboration Workflow
+11. Branching Strategy
+12. Contribution Instructions
+13. Testing and Debugging
+14. Security and Data Protection
 
-The application uses **JavaScript** for its application logic and **Firebase** for authentication and data storage.
+---
 
-## 2. Client Objectives
+# Project Description and Purpose
 
-The portal aims to:
+Learning Hub is a browser-based Learner Support Portal developed to provide learners and assessors with a single platform for managing learning tasks, support bookings, progress, learning resources, and coding practice.
 
-* Provide a single, clear interface for managing learning tasks and support requests.
-* Allow users to register, sign in, sign out, and view their own information.
-* Store, retrieve, update, and delete application data using Firebase.
-* Calculate and display meaningful progress summaries.
-* Provide an interactive mini-game that reinforces basic programming concepts.
-* Allow developers to collaborate using GitHub and controlled version history.
+Learners may currently manage their goals, tasks, support bookings, and learning progress across separate documents and messages. This can make it difficult for learners to manage their work and for assessors to identify outstanding tasks, learners who require support, and overall learner progress.
 
-## 3. User Roles
+The purpose of Learning Hub is to provide a centralised platform where users can manage their learning activities in one place.
 
-### Learner
+The application uses JavaScript for application logic and Firebase for authentication and data storage.
+
+---
+
+# Client Objectives
+
+The client requires Learning Hub to provide a centralised platform that supports both learners and assessors.
+
+The main objectives are to:
+
+- Provide a single and clear interface for managing learning tasks and support requests.
+- Allow users to register, sign in, sign out, and access their own information.
+- Allow learners to create, read, update, complete, and delete tasks.
+- Allow learners to book support sessions.
+- Store, retrieve, update, and delete application data using Firebase.
+- Calculate and display meaningful learner progress.
+- Provide access to learning resources.
+- Include an interactive coding mini-game that reinforces programming concepts.
+- Allow assessors to view relevant learner support information.
+- Allow developers to collaborate using Git and GitHub.
+- Use controlled version history and collaborative development practices.
+
+---
+
+# User Roles
+
+Learning Hub has two main user roles.
+
+## Learner
 
 Learners can:
 
-* Register and sign in.
-* Sign out securely.
-* Manage their own learning tasks.
-* Create, update, complete, and delete tasks.
-* Book support sessions.
-* View support-booking status.
-* View calculated learning progress.
-* Access learning resources.
-* Play the coding mini-game.
-* View and print a progress summary.
+- Register for an account.
+- Sign in and sign out securely.
+- Manage their own learning tasks.
+- Create new tasks.
+- View existing tasks.
+- Update task information.
+- Mark tasks as completed.
+- Delete tasks.
+- Book support sessions.
+- View support booking statuses.
+- View their calculated learning progress.
+- Access learning resources.
+- Play the coding mini-game.
+- View and print a progress summary.
 
-### Assessor / Administrator
+## Assessor / Administrator
 
 Assessors or administrators can:
 
-* View submitted support bookings.
-* View relevant learner activity.
-* Update booking status where included in the approved project scope.
+- View submitted support bookings.
+- View relevant learner activity.
+- Identify learners who require support.
+- Monitor learner progress where included in the project scope.
+- Update support booking statuses where this functionality is included in the approved project scope.
 
-## 4. Core Features
+---
 
-### Authentication
+# Core Features
 
-* User registration.
-* User sign-in.
-* User sign-out.
-* Authenticated user state.
-* Firebase Authentication.
-* User-specific access to application data.
-
-### Dashboard
-
-The dashboard displays:
-
-* Total number of tasks.
-* Completed tasks.
-* Outstanding tasks.
-* Calculated progress percentage.
-* Relevant learner activity.
-
-### Task Manager
-
-The task manager provides full CRUD functionality:
-
-* **Create** new learning tasks.
-* **Read** existing tasks.
-* **Update** task information.
-* **Delete** tasks.
-
-Tasks may include:
-
-* Title.
-* Category.
-* Due date.
-* Priority.
-* Completion status.
-* Creation date.
-* User ID.
-
-### Support Booking
-
-Learners can submit support-session requests containing:
-
-* Support topic.
-* Preferred date.
-* Additional notes.
-* Booking status.
-
-The form includes input validation and provides feedback after submission.
-
-### Search, Filter and Sort
-
-The application uses JavaScript arrays and higher-order functions to allow users to:
-
-* Search tasks.
-* Filter tasks.
-* Sort tasks.
-* View specific task categories or statuses.
-
-### Preferences
-
-The application uses cookies for non-sensitive preferences such as:
-
-* Theme preference.
-* Display mode.
-* Last selected filter.
-
-**Passwords and sensitive information are never stored in cookies.**
-
-### Progress Summary
-
-The portal calculates learner progress from stored task information and provides a printable progress summary.
-
-The application also includes:
-
-* Confirmation dialogs before destructive actions.
-* Appropriate redirects after selected actions.
-* Progress calculations and summaries.
-
-### Animation and Multimedia
+## Authentication
 
 The application includes:
 
-* At least one JavaScript timer-driven animation.
-* One controlled multimedia element.
+- User registration.
+- User sign-in.
+- User sign-out.
+- Authenticated user state.
+- Firebase Authentication.
+- User-specific access to application data.
 
-### Coding Mini-Game
+## Dashboard
 
-A short interactive coding game reinforces basic programming concepts.
+The dashboard provides an overview of learner activity, including:
 
-The game is developed using an assessor-approved JavaScript framework or library such as **Phaser.js**, **Kaboom.js**, or another approved option.
+- Total number of tasks.
+- Completed tasks.
+- Outstanding tasks.
+- Progress percentage.
+- Relevant learner activity.
 
-Game results can be stored in Firebase, including:
+## Task Manager
 
-* User ID.
-* Score.
-* Duration.
-* Completion date.
+The task manager provides CRUD functionality:
 
-## 5. Technologies Used
+- **Create** new learning tasks.
+- **Read** existing tasks.
+- **Update** task information.
+- **Delete** tasks.
 
-| Area                   | Technology                                     |
-| ---------------------- | ---------------------------------------------- |
-| Structure              | HTML                                           |
-| Styling                | CSS                                            |
-| Application Logic      | JavaScript                                 |
-| Database               | Firebase Realtime Database                     |
-| Authentication         | Firebase Authentication                        |
-| REST Communication     | Firebase Realtime Database REST API            |
-| Framework / Library    | Assessor-approved JavaScript framework/library |
-| IDE                    | Visual Studio Code                             |
-| Version Control        | Git and GitHub                                 |
-| Continuous Integration | GitHub Actions                                 |
-| Testing                | Browser Developer Tools and manual test cases  |
+Tasks may include:
 
-## 6. Firebase Data Structure
+- Title.
+- Category.
+- Due date.
+- Priority.
+- Completion status.
+- Creation date.
+- User ID.
 
-The application uses Firebase Realtime Database.
+## Support Bookings
 
-A planned database structure is:
+Learners can submit support-session requests containing:
 
-```text
-users/
-  {uid}/
-    displayName
-    email
-    role
-    createdAt
+- Support topic.
+- Preferred date.
+- Additional notes.
+- Booking status.
 
-tasks/
-  {taskId}/
-    userId
-    title
-    category
-    dueDate
-    priority
-    completed
-    createdAt
+The booking form includes input validation and provides feedback after submission.
 
-bookings/
-  {bookingId}/
-    userId
-    topic
-    preferredDate
-    notes
-    status
+## Search, Filter and Sort
 
-scores/
-  {scoreId}/
-    userId
-    score
-    duration
-    completedAt
+The application allows users to:
 
+- Search tasks.
+- Filter tasks.
+- Sort tasks.
+- View tasks by category.
+- View tasks by completion status.
 
-The structure may be adapted with assessor approval where necessary.
+## User Preferences
 
-## 7. Firebase CRUD Operations
+The application may use cookies for non-sensitive preferences such as:
 
-The application documents and demonstrates REST API communication with Firebase Realtime Database.
+- Theme preference.
+- Display mode.
+- Last selected filter.
 
-The required operations include:
+> Passwords and sensitive information must never be stored in cookies.
 
-* GET — retrieve data.
-* POST — create new records.
-* PUT — replace existing records.
-* PATCH — update selected fields.
-* DELETE — remove records.
+## Progress Summary
 
-All requests that access protected data must be appropriately authenticated or performed within an assessor-controlled test environment.
+The application calculates learner progress from stored task information.
 
-## 8. Security and Data Protection
+Users can:
 
-Security is an important part of the application.
+- View progress calculations.
+- View learning summaries.
+- Print their progress summary.
 
-The system will:
+## Coding Mini-Game
 
-* Prevent unrestricted public write access to the database.
-* Restrict users to data appropriate to their authenticated identity and role.
-* Use Firebase Authentication to handle passwords.
-* Never store passwords in Firebase application data.
-* Never store passwords in cookies.
-* Never hard-code passwords or private credentials in source code.
-* Never commit service-account files or other secrets to GitHub.
-* Validate user input before writing information to Firebase.
+The application includes a short interactive mini-game that reinforces basic programming concepts.
 
-Firebase Realtime Database security rules will be configured to support these requirements.
+Game results may include:
 
-## 9. Git and GitHub Workflow
+- User ID.
+- Score.
+- Duration.
+- Completion date.
 
-The project uses Git and GitHub for version control and collaboration.
+---
 
-The development process includes:
+# Team Members and Roles
 
-* Git repository management.
-* Feature branches.
-* Meaningful commits.
-* Pull requests.
-* Code reviews.
-* Merging approved changes.
-* Contribution history.
+| Team Member | Role | Responsibilities |
+|---|---|---|
+| Sindile | Developer | Front-end development, application development, testing, documentation and GitHub collaboration |
+| Add team member name | Developer | Add the team member's responsibilities here |
 
-Developers work collaboratively while maintaining controlled version history.
+> **Note:** Replace the placeholder information with the correct details for your actual project team.
 
-## 10. Continuous Integration
+## Collaboration Roles
 
-The project includes a basic GitHub Actions workflow.
+During collaborative development, team members may work in the following roles:
 
-Automated checks may include:
+### Driver
 
-* JavaScript linting.
-* Formatting checks.
-* Basic automated tests.
-* Project validation.
+The driver is responsible for:
 
-The purpose of continuous integration is to identify problems before changes are merged into the main project.
+- Writing and implementing code.
+- Making changes to the project.
+- Following the agreed requirements.
 
-## 11. Testing and Debugging
+### Navigator
 
-Testing is performed using:
+The navigator is responsible for:
 
-* Browser Developer Tools.
-* Console logging.
-* Trace table.
-* Manual test cases.
-* Firebase testing.
-* Authentication testing.
-* CRUD operation testing.
+- Reviewing the code.
+- Checking project requirements.
+- Identifying possible problems.
+- Suggesting improvements.
+- Assisting with testing.
 
-Errors identified during development are documented and corrected.
+Team members can exchange roles during development to ensure equal participation.
 
-Testing covers important functionality including:
+---
 
-* Registration and sign-in.
-* Sign-out.
-* Task creation.
-* Task editing.
-* Task completion.
-* Task deletion.
-* Support booking.
-* Progress calculations.
-* Search/filter/sort functionality.
-* Firebase CRUD operations.
-* Mini-game functionality.
-* Printing the progress summary.
-* Authentication and security rules.
+# Technologies Used
 
-## 12. Project Goals
+| Area | Technology |
+|---|---|
+| Structure | HTML  |
+| Styling | CSS  |
+| Application Logic | JavaScript |
+| Database | Firebase Realtime Database |
+| Authentication | Firebase Authentication |
+| REST Communication | Firebase Realtime Database REST API |
+| IDE | Visual Studio Code |
+| Version Control | Git |
+| Remote Repository | GitHub |
+| Continuous Integration | GitHub Actions |
+| Testing | Browser Developer Tools and manual testing |
 
-The completed portal should provide learners with an easy-to-use central location for managing their learning activities while giving assessors improved visibility of learner support requirements and progress.
+---
 
-The project demonstrates practical application of:
+# Project Structure
 
-* JavaScript programming.
-* DOM manipulation.
-* Events and user interaction.
-* Arrays.
-* CRUD operations.
-* Firebase integration.
-* REST API communication.
-* Authentication.
-* Data validation.
-* Client-side calculations.
-* Git and GitHub collaboration.
-* Testing and debugging.
-* JavaScript frameworks.
-
-## 13. Project Status
-
-**Development status:** In progress
-
-The project will be developed incrementally, with features tested and committed through Git throughout the development process.
-
-## 14. Repository Structure
-
-A possible project structure is:
-
-```text
-skills-track-portal/
+learning-hub/
 - index.html
 - dashboard.html
 - tasks.html
@@ -360,16 +276,187 @@ tests/
 .github/
 workflows/
 README.md
-```
 
-## 15. Security Notice
+# Firebase Data Structure
 
-Firebase configuration and client-side configuration values must be handled appropriately. Private credentials, service-account keys, passwords, API secrets, and other sensitive information must **not** be committed to the repository.
+users/
+  {uid}/
+    displayName
+    email
+    role
+    createdAt
 
-Database security rules must be configured before the application is deployed for real users.
+tasks/
+  {taskId}/
+    userId
+    title
+    category
+    dueDate
+    priority
+    completed
+    createdAt
 
-## 16. Expected Outcome
+bookings/
+  {bookingId}/
+    userId
+    topic
+    preferredDate
+    notes
+    status
 
-The final SkillsTrack Learner Support Portal will provide a functional, responsive, and user-friendly web application that brings learner task management, support bookings, progress tracking, learning resources, and programming practice into one system.
+scores/
+  {scoreId}/
+    userId
+    score
+    duration
+    completedAt
 
-The project will demonstrate the practical use of **HTML5, CSS3, JavaScript, Firebase, REST APIs, authentication, Git, GitHub, automated checks, and software testing** to solve a realistic learner-support problem.
+## Firebase CRUD Operations
+
+The application demonstrates CRUD operations using Firebase Realtime Database.
+
+The operations include:
+
+GET — Retrieve data.
+POST — Create new records.
+PUT — Replace existing records.
+PATCH — Update selected fields.
+DELETE — Remove records.
+
+All protected data must only be accessed by authorised users.
+
+# GitHub Collaboration Workflow
+
+Git and GitHub are used to manage version control and support team collaboration.
+
+The general workflow is:
+
+Pull the latest changes from the repository.
+Create or switch to the appropriate branch.
+Create a feature branch for new functionality.
+Develop the feature.
+Test the changes.
+Add and commit the changes.
+Push the branch to GitHub.
+Create a Pull Request.
+Review the changes.
+Merge approved changes.
+
+# Branching Strategy
+
+The project uses a branch-based workflow.
+
+## Main Branch
+
+The main branch contains stable and approved versions of the project.
+
+Unfinished work should not be developed directly on the main branch.
+
+## Development Branch
+
+The dev branch can be used to combine and test completed features before they are merged into the main branch.
+
+## Feature Branches
+
+This are the feature Branches
+- sindile
+- rixongile
+- zekhethelo
+
+# Contribution Instructions
+
+When contributing to Learning Hub:
+
+1. Pull the latest changes from the repository.
+2. Create a new feature branch.
+3. Make the required changes.
+4. Test your work.
+5. Review your changes before committing.
+6. Use a clear and meaningful commit message.
+7. Push your branch to GitHub.
+8. Create a Pull Request.
+9. Allow the changes to be reviewed.
+10. Merge approved changes into the appropriate branch
+
+# Testing and Debugging
+
+Testing is performed throughout the development process.
+
+## Testing Methods
+
+The project uses:
+
+Browser Developer Tools.
+Console logging.
+Trace tables.
+Manual test cases.
+Firebase testing.
+Authentication testing.
+CRUD operation testing.
+
+## Features to Test
+
+Important functionality includes:
+
+User registration.
+User sign-in.
+User sign-out.
+Task creation.
+Task editing.
+Task completion.
+Task deletion.
+Support booking.
+Progress calculations.
+Search functionality.
+Filter functionality.
+Sort functionality.
+Firebase CRUD operations.
+Mini-game functionality.
+Printing the progress summary.
+Authentication and security rules.
+
+# Security and Data Protection
+
+Security is an important part of Learning Hub.
+
+## The system should:
+
+- Use Firebase Authentication to manage user passwords.
+- Never store passwords in Firebase application data.
+- Never store passwords in cookies.
+- Never hard-code passwords or private credentials in the source code.
+- Never commit service-account files or secrets to GitHub.
+- Validate user input before storing information.
+- Restrict users to data appropriate to their authenticated identity.
+- Prevent unrestricted public access to the database.
+- Use Firebase Realtime Database security rules.
+
+# Skills Demonstrated
+
+This project demonstrates practical skills in:
+
+HTML.
+CSS.
+JavaScript.
+DOM manipulation.
+Events and user interaction.
+Arrays and higher-order functions.
+CRUD operations.
+Firebase integration.
+REST API communication.
+Authentication.
+Data validation.
+Client-side calculations.
+Git and GitHub collaboration.
+Testing and debugging.
+JavaScript frameworks or libraries.
+
+# License
+
+This project was developed for educational purposes.
+
+Authors
+
+Sindile Sekgobela, Rixongile Maluleke, and ze'Khethelo Dlamini
+
+Learning Hub Development Team
