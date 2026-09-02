@@ -14,3 +14,5 @@ Formula: progress = (completed/total)*100, totalHours = reduce(), outstanding = 
 ## 2026-08-31 - Core CRUD
 POST GET PATCH DELETE tasks, bookings status pending->approved, filter() sort() reduce(), window.print()
 
+## 2026-09-02 - README.md
+Updated the README.md file with additional information about the project and its features.
