@@ -1,0 +1,86 @@
+# FireBase Data Structure
+
+users/
+  {uid}/
+    displayName
+    email
+    role
+    createdAt
+
+tasks/
+  {taskId}/
+    userId
+    title
+    category
+    dueDate
+    priority
+    completed
+    createdAt
+
+bookings/
+  {bookingId}/
+    userId
+    topic
+    preferredDate
+    notes
+    status
+
+scores/
+  {scoreId}/
+    userId
+    score
+    duration
+    completedAt
+
+# REST API Planning
+
+(https://learner-support-portal-4ccc1-default-rtdb.firebaseio.com) 
+
+## Users Endpoints
+
+| Action           | HTTP Method | Endpoint            |
+| ---------------- | ----------- | ------------------- |
+| Create user data | POST        | `/users.json`       |
+| Get all users    | GET         | `/users.json`       |
+| Get one user     | GET         | `/users/{uid}.json` |
+| Update user      | PATCH       | `/users/{uid}.json` |
+| Delete user data | DELETE      | `/users/{uid}.json` |
+
+## Tasks Endpoints
+
+| Action        | HTTP Method | Endpoint               |
+| ------------- | ----------- | ---------------------- |
+| Create task   | POST        | `/tasks.json`          |
+| Get all tasks | GET         | `/tasks.json`          |
+| Get one task  | GET         | `/tasks/{taskId}.json` |
+| Update task   | PATCH       | `/tasks/{taskId}.json` |
+| Delete task   | DELETE      | `/tasks/{taskId}.json` |
+
+## Bookings Endpoints
+
+| Action          | HTTP Method | Endpoint                     |
+| --------------- | ----------- | ---------------------------- |
+| Create booking  | POST        | `/bookings.json`             |
+| Get bookings    | GET         | `/bookings.json`             |
+| Get one booking | GET         | `/bookings/{bookingId}.json` |
+| Update booking  | PATCH       | `/bookings/{bookingId}.json` |
+| Delete booking  | DELETE      | `/bookings/{bookingId}.json` |
+
+## Scores Endpoints
+
+| Action        | HTTP Method | Endpoint                 |
+| ------------- | ----------- | ------------------------ |
+| Create score  | POST        | `/scores.json`           |
+| Get scores    | GET         | `/scores.json`           |
+| Get one score | GET         | `/scores/{scoreId}.json` |
+| Update score  | PATCH       | `/scores/{scoreId}.json` |
+| Delete score  | DELETE      | `/scores/{scoreId}.json` |
+
+# CRUD Planning
+
+| CRUD Operation | Firebase Method | Purpose              |
+| -------------- | --------------- | -------------------- |
+| **Create**     | POST            | Add new data         |
+| **Read**       | GET             | Retrieve data        |
+| **Update**     | PATCH           | Change existing data |
+| **Delete**     | DELETE          | Remove data          |
