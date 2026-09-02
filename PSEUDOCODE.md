@@ -1,72 +1,199 @@
 USER REGISTRATION
 ```
-FUNCITION
-registerUser(displayName, email, password, role)
-	IF email NOT valid OR password length < 8 THEN 
-	  SHOW error "Invalid input"
-    	  RETURN
-	END IF
-     TRY
-	CREATE user in FireBase 
-Auth with email, password
-	GET uid from Auth
-	CREATE User Object:
-  	    displayName = displayName
- 	    email = email 
-	    role = role // learner or admin
-	 createdAt = current timestamp
+FUNCTION registerUser(displayName, email, password, role)
 
-	SAVE to FireBase REST API:
-	 POST /user/{uid} with User Object
+    // VARIABLES AND DATA TYPES
+    SET emailValid = VALIDATE email
+    SET passwordValid = LENGTH OF password >= 8
+    SET allowedRoles = ["learner", "admin"]
 
-	SHOW "Registered successfully"
-	REDIRECT to dashboard.html
-     CATCH error.message
-END FUNCITION
+    // VALIDATE INPUT
+    IF displayName IS EMPTY THEN
+        SHOW error "Display name is required"
+        RETURN
+    END IF
 
-```
+    IF emailValid = FALSE THEN
+        SHOW error "Invalid email address"
+        RETURN
+    END IF
 
-LOGIN/ SIGN IN
-```
-FUNCTION loginUser(email, password)
-   IF fields empty THEN
-     SHOW "Please fill all fields"
-     RETURN
-   END IF
-   
-   TRY
-     SIGNIN with FireBase Auth email, password
-     SET cookie: lastLogin = currentDate, theme = localStorage.theme
-     REDIRECT to dashboard.html
-   CATCH 
-      SHOW "Invalid credentials"
-END FUNCTION 
+    IF passwordValid = FALSE THEN
+        SHOW error "Password must contain at least 8 characters"
+        RETURN
+    END IF
 
-FUNCTION checkAuthState()
-  ON Auth state changed
-    IF user exists THEN 
-       FETCH /user/{uid} from dataBase 
-       IF user.role == "admin" THEN
-         REDIRECT to admin.html 
-       ELSE
-         REDIRECT to dashboard.html // learner.html
-       END IF
-       ELSE
-         REDIRECT to login.html
-       END IF
+    // CHECK USER ROLE
+    IF role IS NOT IN allowedRoles THEN
+        SHOW error "Invalid user role"
+        RETURN
+    END IF
+
+    TRY
+
+        // CREATE USER IN FIREBASE AUTHENTICATION
+        CREATE user in Firebase Authentication
+        USING email AND password
+
+        // GET USER ID
+        SET uid = GET uid from authenticated user
+
+        // GET CURRENT TIME
+        SET createdAt = CURRENT timestamp
+
+        // CREATE USER OBJECT
+        SET userObject = {
+            displayName: displayName,
+            email: email,
+            role: role,
+            createdAt: createdAt
+        }
+
+        // SAVE USER DATA TO FIREBASE
+        POST /users/{uid}
+        WITH userObject
+
+        SHOW "Registered successfully"
+
+        REDIRECT to dashboard.html
+
+    CATCH error
+
+        SHOW error.message
+
+    END TRY
+
 END FUNCTION
 
-```
+LOGIN / SIGN IN
 
+FUNCTION loginUser(email, password)
+
+    // VARIABLES AND DATA TYPES
+    SET emailValid = VALIDATE email
+    SET passwordValid = LENGTH OF password > 0
+
+    // VALIDATE INPUT
+    IF email IS EMPTY OR password IS EMPTY THEN
+        SHOW error "Please fill in all fields"
+        RETURN
+    END IF
+
+    IF emailValid = FALSE THEN
+        SHOW error "Please enter a valid email address"
+        RETURN
+    END IF
+
+    IF passwordValid = FALSE THEN
+        SHOW error "Password is required"
+        RETURN
+    END IF
+
+    TRY
+
+        // SIGN IN USER
+        SIGN IN with Firebase Authentication
+        USING email AND password
+
+        // GET CURRENT USER
+        SET currentUser = authenticated user
+        SET uid = currentUser.uid
+        SET currentDate = CURRENT timestamp
+
+        // SAVE NON-SENSITIVE USER PREFERENCES
+        SET lastLogin = currentDate
+        SET theme = GET theme FROM localStorage
+
+        STORE lastLogin in cookie
+
+        SHOW "Login successful"
+
+        // CHECK USER AUTHENTICATION STATE
+        CALL checkAuthState()
+
+    CATCH error
+
+        SHOW "Invalid email or password"
+
+    END TRY
+
+END FUNCTION
+
+
+FUNCTION checkAuthState()
+
+    ON authentication state changed
+
+        IF current user EXISTS THEN
+
+            SET uid = current user.uid
+
+            // FETCH USER DATA
+            GET /users/{uid} FROM Firebase Database
+
+            SET userData = returned user object
+            SET userRole = userData.role
+
+            // ROLE-BASED REDIRECTION
+            IF userRole = "admin" THEN
+
+                REDIRECT to admin.html
+
+            ELSE IF userRole = "learner" THEN
+
+                REDIRECT to dashboard.html
+
+            ELSE
+
+                SHOW error "Invalid user role"
+                REDIRECT to login.html
+
+            END IF
+
+        ELSE
+
+            REDIRECT to login.html
+
+        END IF
+
+END FUNCTION
+```
 SIGN OUT
 ```
 FUNCTION signOutUser()
-  SHOW confirmation dialog "Are you sure you want to log out..?"
-  IF user clicks YES THEN 
-  SIGN OUT from FireBase
-  REDIRECT to login.html
- END IF
-END FUNCTION 
+
+    // SHOW CONFIRMATION MESSAGE
+    SET confirmation = SHOW confirmation dialog
+    "Are you sure you want to log out?"
+
+    // CHECK USER RESPONSE
+    IF confirmation = TRUE THEN
+
+        TRY
+
+            // SIGN OUT FROM FIREBASE
+            SIGN OUT current user from Firebase Authentication
+
+            // SHOW SUCCESS MESSAGE
+            SHOW "You have successfully logged out"
+
+            // REDIRECT USER
+            REDIRECT to login.html
+
+        CATCH error
+
+            SHOW error message
+
+        END TRY
+
+    ELSE
+
+        // USER CANCELLED SIGN OUT
+        SHOW "Sign out cancelled"
+
+    END IF
+
+END FUNCTION
 
 ```
 
