@@ -14,12 +14,12 @@
 
      
 --------------------------------- --- ------------------+
-| Learner |---------| Task |----------| Submission |
+| Learner |---------| Task        |----------| Submission |
 ---------------------------------------------------------
-| - classID | | - taskID |             | - submissionID |
------------- | - title |             | - grade |
-                       | - status |    | - submitDate |
-                       - dueDate |    | - feedback |
+| - classID |       | - taskID    |             | submissionID |
+------------ |        - title     |                   | - grade |
+                       | - status |             | - submitDate |
+                       - dueDate  |              | - feedback |
                        -------------------------------
 
          
