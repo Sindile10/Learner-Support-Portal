@@ -27,8 +27,7 @@
 -----------------
 | Lecturer |
 -----------------
-| - staffID |S
-| - classes[] |
+| - staffID |      | - classes[] |
 ----------------
 | +markRegister() |
 | +grade() |
