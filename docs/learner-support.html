@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Hub - Learner Support Portal</title>
+  <link rel="stylesheet" href="learner-support style.css">
+</head>
+<body>
+
+  <!-- 1. LEFT SIDEBAR NAVIGATION -->
+  <div class="sidebar" id="sidebar">
+    <div class="brand">Learning Hub</div>
+
+    <ul class="nav-menu">
+      <li class="nav-item" onclick="switchView('Dashboard', this)">Dashboard</li>
+      <li class="nav-item" onclick="switchView('Tasks', this)">Tasks</li>
+      <li class="nav-item active" onclick="switchView('Support Bookings', this)">Support Bookings</li>
+      <li class="nav-item" onclick="switchView('Progress', this)">Progress</li>
+      <li class="nav-item" onclick="switchView('Resources', this)">Resources</li>
+    </ul>
+
+    <div class="user-profile">
+      <div class="profile-info">
+        <div class="avatar">M</div>
+        <div>
+          <div class="user-name">Miss Dlamini</div>
+          <div class="welcome-text">learner@example.com</div>
+        </div>
+      </div>
+      <button class="logout-btn" onclick="handleLogout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- 2. MAIN APPLICATION CONTENT -->
+  <div class="main-wrapper">
+
+    <!-- TOP NAVIGATION HEADER -->
+    <div class="top-header">
+      <button class="menu-toggle-btn" onclick="toggleSidebar()">Side Bar</button>
+      <div class="header-right">
+        <span class="notifications-text">Notifications</span>
+        <div class="header-user">
+          <div class="avatar-small">MD</div>
+          <span>Miss Dlamini</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="content-container">
+
+      <!-- HERO HEADER CARD -->
+      <div class="welcome-card">
+        <div>
+          <h1 class="page-title">Learner Support Portal</h1>
+          <p class="page-subtitle">Your all-in-one platform for academic support, task management, resources and more.</p>
+        </div>
+        <div class="status-box">
+          <div class="status-title">Status</div>
+          <div class="status-item"><span class="dot dot-yellow"></span> Pending</div>
+          <div class="status-item"><span class="dot dot-blue"></span> In Progress</div>
+          <div class="status-item"><span class="dot dot-green"></span> Completed</div>
+        </div>
+      </div>
+
+      <!-- INNER CARD CONTAINER -->
+      <div class="card-box">
+
+        <!-- SUB-HEADER BAR -->
+        <div class="sub-header-bar">
+          <span>Support Bookings</span>
+          <span>Notification</span>
+          <span>ze'Khethelo</span>
+        </div>
+
+        <!-- BANNER -->
+        <div class="banner">
+          Book a session with an assessor when you need help
+        </div>
+
+        <!-- SUMMARY STATS GRID -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Upcoming Bookings</div>
+            <div class="stat-value">5</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Completed Sessions</div>
+            <div class="stat-value">2</div>
+          </div>
+        </div>
+
+        <!-- UPCOMING SESSION CARD -->
+        <div class="session-card">
+          <h2 class="card-subtitle">Upcoming Support Session</h2>
+          <div class="session-details">
+            <p><strong>Topic:</strong> JavaScript Support</p>
+            <p><strong>Assessor:</strong> Miss Dlamini</p>
+            <p><strong>Date:</strong> 25 August 2026</p>
+            <p><strong>Time Slot:</strong> 10:00 AM – 11:00 AM</p>
+          </div>
+          <div class="button-group">
+            <button class="btn btn-secondary" onclick="viewDetails()">View Details</button>
+            <button class="btn btn-danger" onclick="cancelUpcomingBooking()">Cancel Booking</button>
+          </div>
+        </div>
+
+        <!-- PREVIOUS SESSIONS TABLE CARD -->
+        <div class="table-card">
+          <h2 class="card-subtitle">Previous Sessions</h2>
+
+          <table class="sessions-table">
+            <thead>
+              <tr>
+                <th>Topic</th>
+                <th>Date / Select Time</th>
+                <th>Completed</th>
+                <th>Cancelled</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td class="task-title">HTML Assignment</td>
+                <td>
+                  <div class="date-text">23 Nov 2026</div>
+                  <!-- CUSTOM CSS DROPDOWN FOR TIME -->
+                  <select class="custom-dropdown">
+                    <option value="09:00">09:00 AM – 10:00 AM</option>
+                    <option value="10:00" selected>10:00 AM – 11:00 AM</option>
+                    <option value="14:00">02:00 PM – 03:00 PM</option>
+                  </select>
+                </td>
+                <td>
+                  <!-- CUSTOM CSS DROPDOWN FOR COMPLETED -->
+                  <select class="custom-dropdown status-dropdown" onchange="updateRowStatus(this)">
+                    <option value="Pending" selected>Pending</option>
+                    <option value="Done">Done</option>
+                  </select>
+                </td>
+                <td>
+                  <!-- CUSTOM CSS DROPDOWN FOR CANCELLED -->
+                  <select class="custom-dropdown cancel-dropdown" onchange="updateCancelStatus(this)">
+                    <option value="Pending" selected>Pending</option>
+                    <option value="Cancel">Cancel</option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="task-title">CSS Design</td>
+                <td>
+                  <div class="date-text">27 Nov 2026</div>
+                  <select class="custom-dropdown">
+                    <option value="09:00">09:00 AM – 10:00 AM</option>
+                    <option value="11:30" selected>11:30 AM – 12:30 PM</option>
+                    <option value="15:00">03:00 PM – 04:00 PM</option>
+                  </select>
+                </td>
+                <td>
+                  <select class="custom-dropdown status-dropdown" onchange="updateRowStatus(this)">
+                    <option value="Pending" selected>Pending</option>
+                    <option value="Done">Done</option>
+                  </select>
+                </td>
+                <td>
+                  <select class="custom-dropdown cancel-dropdown" onchange="updateCancelStatus(this)">
+                    <option value="Pending" selected>Pending</option>
+                    <option value="Cancel">Cancel</option>
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="task-title">JavaScript DOM</td>
+                <td>
+                  <div class="date-text">23 Apr 2026</div>
+                  <select class="custom-dropdown">
+                    <option value="10:00">10:00 AM – 11:00 AM</option>
+                    <option value="13:00" selected>01:00 PM – 02:00 PM</option>
+                  </select>
+                </td>
+                <td>
+                  <select class="custom-dropdown status-dropdown" onchange="updateRowStatus(this)">
+                    <option value="Pending">Pending</option>
+                    <option value="Done" selected>Done</option>
+                  </select>
+                </td>
+                <td>
+                  <select class="custom-dropdown cancel-dropdown" onchange="updateCancelStatus(this)">
+                    <option value="Pending">Pending</option>
+                    <option value="Cancel" selected>Cancel</option>
+                  </select>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <button class="btn btn-create" onclick="addBookSupport()">+ Add Book Support</button>
+        </div>
+• This button must connect you with New task page e.g new task.html
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="learner-support script.js"></script>
+</body>
+</html>
