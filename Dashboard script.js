@@ -1,3 +1,9 @@
+// 1. Sidebar Toggle Open/Collapsed Function
+function toggleSidebar() {
+  let sidebar = document.getElementById("sidebar");
+  sidebar.classList.toggle("collapsed");
+}
+
 // 2. Switch Views (Dashboard, Support Booking, Learner Task, Settings)
 function switchView(viewName, menuElement) {
   // Update sidebar active menu highlight
