@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Hub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- TOP HEADER BAR -->
+  <header class="top-header">
+    <div class="header-left">
+      <span class="brand-title">Learning Hub</span>
+    </div>
+    <div class="header-right">
+      <span class="nav-badge">Notifications (3)</span>
+      <span class="user-profile">JOHN</span>
+    </div>
+  </header>
+
+  <!-- MAIN APP WRAPPER -->
+  <div class="app-wrapper">
+
+    <!-- FUNCTIONAL SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <!-- SIDEBAR TOGGLE BUTTON -->
+      <button class="sidebar-toggle-btn active" onclick="toggleSidebar()">
+        Side Bar
+      </button>
+
+      <ul class="sidebar-menu">
+        <li class="menu-item" onclick="switchView('Dashboard', this)">DashBoard</li>
+        <li class="menu-item" onclick="switchView('Support Booking', this)">Support Booking</li>
+        <li class="menu-item" onclick="switchView('Learner Task', this)">Learner Task</li>
+        <li class="menu-item" onclick="switchView('Settings', this)">Settings</li>
+      </ul>
+    </aside>
+
+    <!-- MAIN DASHBOARD CONTENT AREA -->
+    <main class="main-content">
+
+      <!-- DASHBOARD MAIN VIEW -->
+      <div id="view-Dashboard" class="page-view">
+
+        <!-- WELCOME CARD -->
+        <div class="welcome-card">
+          <div class="avatar-placeholder">JOHN</div>
+          <div>
+            <div class="welcome-sub">Welcome back</div>
+            <h1 class="welcome-title">Mr John</h1>
+          </div>
+        </div>
+
+        <!-- DASHBOARD ACTION CARDS -->
+        <div class="cards-container">
+
+          <!-- SUPPORT BOOKING CARD -->
+          <div class="action-card" onclick="switchView('Support Booking', null)">
+            <div class="card-left">
+              <div class="color-badge blue-bg"></div>
+              <span class="card-title">Support Booking</span>
+            </div>
+            <div class="card-arrow">&gt;</div>
+          </div>
+
+          <!-- LEARNER TASK CARD -->
+          <div class="action-card" onclick="switchView('Learner Task', null)">
+            <div class="card-left">
+              <div class="color-badge green-bg"></div>
+              <span class="card-title">Learner Task</span>
+            </div>
+            <div class="card-arrow">&gt;</div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- DYNAMIC DETAIL VIEW (FOR NAVIGATION) -->
+      <div id="view-Detail" class="page-view" style="display: none;">
+        <h2 id="detailTitle" class="view-title">Section View</h2>
+        <div class="detail-card">
+          <p id="detailText">Welcome to this section.</p>
+          <button class="btn-back" onclick="showDashboard()">Back to Dashboard</button>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

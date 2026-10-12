@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Hub - My Tasks</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- LEFT SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <div class="brand">
+      <span>📖</span> Learning Hub
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item" onclick="switchView('Dashboard', this)">📊 Dashboard</li>
+      <li class="nav-item active" onclick="switchView('My Tasks', this)">☑️ My Tasks</li>
+      <li class="nav-item" onclick="switchView('Support Booking', this)">📅 Support Booking</li>
+      <li class="nav-item" onclick="switchView('Resources', this)">📁 Resources</li>
+      <li class="nav-item" onclick="switchView('Progress', this)">📈 Progress</li>
+      <li class="nav-item" onclick="switchView('Mini Game', this)">🎮 Mini Game</li>
+      <li class="nav-item" onclick="switchView('Settings', this)">⚙️ Settings</li>
+    </ul>
+
+    <div class="user-profile">
+      <div class="profile-info">
+        <div class="avatar">S</div>
+        <div>
+          <div class="welcome-text">Welcome back,</div>
+          <div class="user-name">Sindile</div>
+        </div>
+      </div>
+      <button class="logout-btn" onclick="handleLogout()">↳ Logout</button>
+    </div>
+  </div>
+
+  <!-- MAIN AREA -->
+  <div class="main-wrapper">
+
+    <!-- TOP HEADER -->
+    <div class="top-header">
+      <div>🔔</div>
+      <div>Wed, 10 Oct 2026</div>
+      <div>👤 Sindile</div>
+    </div>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="content-container">
+
+      <!-- MY TASKS VIEW -->
+      <div id="view-My Tasks" class="view-section">
+        <h1 class="page-title">My Tasks</h1>
+        <p class="page-subtitle">Keep track of your tasks and stay on top of your goals.</p>
+
+        <!-- CONTROL BAR -->
+        <div class="controls-bar">
+          <button class="control-item" onclick="toggleSidebar()">≡ Side Bar</button>
+          <input type="text" id="searchInput" class="control-item search-input" placeholder="Search tasks..." onkeyup="filterTasks()">
+
+          <select id="categoryFilter" class="control-item" onchange="filterTasks()">
+            <option value="All">Filter by Category: All</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="HTML">HTML</option>
+          </select>
+
+          <select id="priorityFilter" class="control-item" onchange="filterTasks()">
+            <option value="All">Filter by Priority: All</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+          </select>
+
+          <select class="control-item">
+            <option>Sort by: Due Date</option>
+          </select>
+        </div>
+
+        <!-- BANNER -->
+        <div class="banner">
+          🎯 Manage your learning tasks and track your progress.
+        </div>
+
+        <!-- LIST OF TASKS CONTAINER -->
+        <div id="taskList"></div>
+
+        <!-- CREATE BUTTON -->
+        <button class="btn btn-create" onclick="createNewTask()">+ Create New Task</button>
+      </div>
+
+      <!-- GENERIC VIEW (FOR OTHER SIDEBAR LINKS) -->
+      <div id="view-Generic" class="view-section" style="display: none;">
+        <h1 class="page-title" id="genericTitle">Section</h1>
+        <p class="page-subtitle">Welcome to the <span id="genericSubtitle">Section</span> view.</p>
+        <div class="banner">
+          🚀 Content for this page is currently under construction.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Hub - Progress Report</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <div class="top-header">
+    <div class="brand-title">Learning Hub</div>
+    <input type="text" class="search-input" placeholder="Search anything...">
+    <div class="header-user">Welcome back, <strong>ze'Khethelo</strong></div>
+  </div>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+      <ul class="nav-list">
+        <li class="nav-item" onclick="switchTab(this)">Dashboard</li>
+        <li class="nav-item" onclick="switchTab(this)">Tasks</li>
+        <li class="nav-item" onclick="switchTab(this)">Bookings</li>
+        <li class="nav-item active" onclick="switchTab(this)">Progress</li>
+        <li class="nav-item" onclick="switchTab(this)">Resources</li>
+        <li class="nav-item" onclick="switchTab(this)">Settings</li>
+      </ul>
+
+      <div class="sidebar-footer">
+        Small steps<br>make big progress.
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+      <!-- PAGE HEADER -->
+      <div class="page-header">
+        <h1 class="page-title">Progress Report</h1>
+        <div class="today-date">Today, 8 Oct 2026</div>
+      </div>
+
+      <!-- WELCOME CARD -->
+      <div class="welcome-card">
+        <h2>View a summary of your learning tasks and progress.</h2>
+        <p>Stay on track and keep reaching your goals!</p>
+      </div>
+
+      <!-- SIDEBAR TOGGLE BUTTON -->
+      <button class="sidebar-toggle-btn" onclick="toggleSidebar()">Side Bar</button>
+
+      <!-- 4 STATS CARDS -->
+      <div class="stats-grid">
+        <div class="stat-card total">
+          <div class="stat-title">Total Task</div>
+          <div class="stat-number" id="cardTotal">0</div>
+        </div>
+        <div class="stat-card completed">
+          <div class="stat-title">Completed</div>
+          <div class="stat-number" id="cardCompleted">0 Task</div>
+        </div>
+        <div class="stat-card pending">
+          <div class="stat-title">Pending</div>
+          <div class="stat-number" id="cardPending">0 Task</div>
+        </div>
+        <div class="stat-card progress">
+          <div class="stat-title">Progress</div>
+          <div class="stat-number" id="cardProgress">0 %</div>
+        </div>
+      </div>
+
+      <!-- OVERALL PROGRESS GRAPH SECTION -->
+      <div class="progress-section">
+        <div class="section-title">Overall Progress</div>
+
+        <div class="progress-content">
+          <!-- LEFT LEGEND -->
