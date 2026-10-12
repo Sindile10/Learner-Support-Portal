@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Hub - Learner Profile</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- TOP NAVIGATION HEADER -->
+  <header class="top-header">
+    <div class="header-left">
+      <span class="brand-title">Learning Hub</span>
+    </div>
+    <div class="header-right">
+      <span class="nav-badge">Notifications (3)</span>
+      <span class="user-profile">JOHN</span>
+    </div>
+  </header>
+
+  <!-- MAIN APP LAYOUT -->
+  <div class="app-wrapper">
+
+    <!-- FUNCTIONAL SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <button class="sidebar-toggle-btn active" onclick="toggleSidebar()">
+        Side Bar
+      </button>
+
+      <ul class="sidebar-menu">
+        <li class="menu-item" onclick="switchView('DashBoard', this)">DashBoard</li>
+        <li class="menu-item" onclick="switchView('Support Booking', this)">Support Booking</li>
+        <li class="menu-item active" onclick="switchView('Learner Task', this)">Learner Task</li>
+        <li class="menu-item" onclick="switchView('Settings', this)">Settings</li>
+      </ul>
+    </aside>
+
+    <!-- MAIN DASHBOARD CONTENT AREA -->
+    <main class="main-content">
+
+      <div class="dashboard-grid">
+
+        <!-- LEFT COLUMN -->
+        <div class="grid-column">
+
+          <!-- LEARNER PROFILE CARD -->
+          <div class="card">
+            <h2 class="card-title">Learner Profile</h2>
+            <p class="card-subtitle">View and manage your learner information.</p>
+
+            <div class="profile-info-grid">
+              <div class="info-box">
+                <span class="info-label">Name</span>
+                <span class="info-value">SINDILE</span>
+              </div>
+              <div class="info-box">
+                <span class="info-label">Email</span>
+                <span class="info-value">sindile@gmail.com</span>
+              </div>
+            </div>
+
+            <!-- DYNAMIC PROGRESS BAR GRAPH -->
+            <div class="progress-container">
+              <div class="progress-header">
+                <span class="progress-label">Progress</span>
+                <span class="progress-percent" id="progressPercentText">75%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" id="progressBarFill" style="width: 75%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RECENT TASKS CARD -->
+          <div class="card">
+            <h2 class="card-title">Recent Tasks</h2>
+            <p class="card-subtitle">View your latest tasks and their status.</p>
+
+            <div class="list-container" id="recentTasksList">
+              <!-- Dynamically rendered task items -->
+            </div>
+          </div>
+
+          <!-- TASK CONTROLLER -->
+          <div class="card">
+            <h2 class="card-title">Manage Tasks</h2>
+            <button class="btn btn-add" onclick="addNewTask()">+ Add New Task</button>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="grid-column">
+
+          <!-- TASKS SUMMARY OVERVIEW -->
+          <div class="card">
+            <h2 class="card-title">Tasks</h2>
+            <p class="card-subtitle">Track your task progress.</p>
+
+            <div class="stats-row">
+              <div class="stat-badge-box">
+                <span class="stat-label">Total Tasks</span>
+                <span class="stat-number" id="statTotalTasks">20</span>
+              </div>
+              <div class="stat-badge-box">
+                <span class="stat-label">Completed</span>
+                <span class="stat-number" id="statCompletedTasks">15</span>
+              </div>
+              <div class="stat-badge-box">
+                <span class="stat-label">Outstanding</span>
+                <span class="stat-number" id="statOutstandingTasks">5</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUPPORT BOOKINGS OVERVIEW -->
+          <div class="card">
+            <h2 class="card-title">Support Bookings</h2>
+            <p class="card-subtitle">Your support booking overview.</p>
+
+            <div class="stats-row">
+              <div class="stat-badge-box">
+                <span class="stat-label">Total Bookings</span>
+                <span class="stat-number">4</span>
+              </div>
+              <div class="stat-badge-box">
+                <span class="stat-label">Completed</span>
+                <span class="stat-number">3</span>
+              </div>
+              <div class="stat-badge-box">
+                <span class="stat-label">Outstanding</span>
+                <span class="stat-number">1</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- BOOKINGS LIST -->
+          <div class="card">
+            <h2 class="card-title">Bookings</h2>
+            <p class="card-subtitle">View and manage your bookings.</p>
+
+            <div class="list-container">
+              <div class="list-item">
+                <div>
+                  <div class="item-title">Javascript</div>
+                  <div class="item-date">20 AUG 2026</div>
+                  <a href="#" class="item-link" onclick="alert('Opening Javascript Booking Details'); return false;">View Bookings</a>
+                </div>
+                <span class="badge badge-pending">PENDING</span>
+              </div>
+
+              <div class="list-item">
+                <div>
+                  <div class="item-title">CSS Design</div>
+                  <div class="item-date">18 AUG 2026</div>
+                </div>
+                <span class="badge badge-complete">COMPLETED</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
