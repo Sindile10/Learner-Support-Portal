@@ -12,6 +12,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.querySelector('#password');
     const roleInput = document.querySelector('#role');
     const submitBtn = document.querySelector('#submitBtn');
+    const passwordToggle = document.querySelector('.password-toggle');
+
+    if (passwordToggle && passwordInput) {
+        passwordToggle.addEventListener('click', () => {
+            const isHidden = passwordInput.type === 'password';
+            passwordInput.type = isHidden ? 'text' : 'password';
+            passwordToggle.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+            passwordToggle.innerHTML = isHidden
+                ? '<ion-icon name="eye-outline"></ion-icon>'
+                : '<ion-icon name="eye-off-outline"></ion-icon>';
+        });
+    }
 
     signupForm.addEventListener('submit', async function (e) {
         e.preventDefault();

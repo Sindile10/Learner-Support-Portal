@@ -15,7 +15,7 @@
             <div class="input-box">
                 <span class="icon"><ion-icon name="person"></ion-icon></span>
                 <input type="text" id="username" required>
-                <label>Username</label>
+                <label>Name & Surname</label>
             </div>
             <span class="error-msg" id="usernameError"></span>
 
@@ -26,10 +26,12 @@
             </div>
             <span class="error-msg" id="emailError"></span>
 
-            <div class="input-box">
-                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+            <div class="input-box password-box">
                 <input type="password" id="password" required>
-                <label>Password</label>           
+                <label>Password</label>
+                <button type="button" class="password-toggle" aria-label="Show password">
+                    <ion-icon name="eye-off-outline"></ion-icon>
+                </button>
             </div>
             <span class="error-msg" id="passError"></span>
 
