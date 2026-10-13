@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Hub - My Tasks</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="../CSS/task.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="top">
+      <div class="logo">
+        <span>LEARNING HUB</span>
+      </div>
+      <i class="bx bx-menu" id="btn"></i>
+    </div>
+
+    <ul>
+      <li>
+        <a href="learner-dashboard.html">
+          <i class="bx bxs-grid-alt"></i>
+          <span class="nav-item">Dashboard</span>
+        </a>
+      </li>
+      <li class="active">
+        <a href="task.html">
+          <i class="bx bx-task"></i>
+          <span class="nav-item">My Tasks</span>
+        </a>
+      </li>
+      <li>
+        <a href="support.html">
+          <i class="bx bx-user-voice"></i>
+          <span class="nav-item">Support</span>
+        </a>
+      </li>
+      <li>
+        <a href="progress.html">
+          <i class="bx bx-bar-chart-alt-2"></i>
+          <span class="nav-item">Progress</span>
+        </a>
+      </li>
+      <li>
+        <a href="mini-game.html">
+          <i class="bx bx-paper-plane"></i>
+          <span class="nav-item">Mini-Game</span>
+        </a>
+      </li>
+      <li>
+        <a href="summary.html">
+          <i class="bx bx-home-alt"></i>
+          <span class="nav-item">Summary</span>
+        </a>
+      </li>
+      <li>
+        <a href="settings.html">
+          <i class="bx bx-cog"></i>
+          <span class="nav-item">Settings</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <div class="dashboard-wrapper">
+    <header class="top-nav">
+      <button class="notification-btn" id="notifBtn" title="Notifications" aria-label="Notifications">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F80ED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+        <div id="notificationDot" class="notification-dot"></div>
+      </button>
+      <div id="notificationPopup" class="notification-popup">
+        <h4>Notifications</h4>
+        <div class="notification-item">Your task deadline is coming up soon.</div>
+        <div class="notification-item">Keep your study streak going this week.</div>
+      </div>
+    </header>
+
+    <main class="main-panel">
+      <section class="welcome-header">
+        <h1>My Tasks</h1>
+        <p>Keep track of your tasks and stay on top of your goals.</p>
+      </section>
+
+      <div class="card controls-card">
+        <div class="filters">
+          <input type="text" id="search" placeholder="Search tasks..." />
+          <select id="filterCat">
+            <option value="All">All Category</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+          </select>
+          <select id="filterPri">
+            <option value="All">All Priority</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+          <select id="sortBy">
+            <option value="dueDate">Sort by: Due Date</option>
+            <option value="priority">Sort by: Priority</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card info-banner">
+        <p>🎯 Manage your learning tasks and track your progress.</p>
+      </div>
+
+      <div id="tasksList" class="tasks-container"></div>
+
+      <div class="task-actions">
+        <button id="createBtn" class="btn btn-orange">+ Create New Task</button>
+      </div>
+    </main>
+  </div>
+
+  <div id="taskModal" class="modal">
+    <div class="modal-card task-modal-card">
+      <div class="modal-header">
+        <h3 id="popupTitle">Create Task</h3>
+        <button id="closePopup" class="close-btn" aria-label="Close task form">×</button>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          <span>Title</span>
+          <input type="text" id="tTitle" placeholder="Task title" />
+        </label>
+
+        <label>
+          <span>Description</span>
+          <input type="text" id="tDesc" placeholder="Task description" />
+        </label>
+
+        <label>
+          <span>Category</span>
+          <select id="tCat">
+            <option>JavaScript</option>
+            <option>HTML</option>
+            <option>CSS</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Priority</span>
+          <select id="tPri">
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Status</span>
+          <select id="tStatus">
+            <option>In Progress</option>
+            <option>Complete</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Due Date</span>
+          <input type="date" id="tDate" />
+        </label>
+      </div>
+
+      <p id="error" class="form-error"></p>
+      <button id="saveBtn" class="btn btn-blue save-btn">Save Task</button>
+    </div>
+  </div>
+
+  <script src="../JAVASCRIPT/theme.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-database-compat.js"></script>
+  <script src="../JAVASCRIPT/task.js"></script>
+</body>
+</html>
+

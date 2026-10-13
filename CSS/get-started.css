@@ -1,0 +1,232 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #0f111a;
+  color: white;
+}
+
+/* navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.logo {
+  font-size: 20px;
+}
+
+.nav-links a {
+  color: #aaa;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.btn-small {
+  background: white;
+  color: black !important;
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+/* hero */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 40px;
+  gap: 30px;
+}
+
+.hero-text {
+  max-width: 500px;
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.hero-text h1 span {
+  color: #6c7bff;
+}
+
+.hero-text p {
+  color: #9ca3af;
+  font-size: 15px;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.buttons {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.btn-main {
+  background: #6c7bff;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-main:hover {
+  background: #5a69f0;
+}
+
+.btn-outline {
+  border: 1px solid #2d303e;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.stats {
+  display: flex;
+  gap: 30px;
+}
+
+.stat h3 {
+  font-size: 22px;
+}
+
+.stat p {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* right side cards */
+.hero-img {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  background: #1e202b;
+  border: 1px solid #2d303e;
+  padding: 20px;
+  border-radius: 14px;
+  width: 200px;
+}
+
+.card p {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.card h4 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.card span {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.card2 {
+  margin-left: 40px;
+}
+
+.card3 {
+  margin-left: 20px;
+}
+
+/* roles */
+.roles {
+  padding: 40px;
+  text-align: center;
+}
+
+.roles h2 {
+  margin-bottom: 24px;
+}
+
+.role-box {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.role {
+  background: #1e202b;
+  border: 1px solid #2d303e;
+  padding: 24px;
+  border-radius: 14px;
+  width: 280px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.role:hover {
+  border-color: #6c7bff;
+}
+
+.role h3 {
+  margin-bottom: 8px;
+}
+
+.role p {
+  color: #9ca3af;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.role button {
+  width: 100%;
+  background: #2a2d3a;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.role button:hover {
+  background: #6c7bff;
+}
+
+/* mobile */
+@media (max-width: 800px) {
+  .hero {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+  
+  .hero-text h1 {
+    font-size: 36px;
+  }
+
+  .hero-img {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card2, .card3 {
+    margin-left: 0;
+  }
+
+  .role-box {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar {
+    padding: 16px 20px;
+  }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Hub</title>
+  <link rel="stylesheet" href="../CSS/index.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">LEARNING HUB</div>
+      
+      <div class="nav-links">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="aboutUs.html" class="nav-item">About Us</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+        <button class="btn btn-login" id="navLoginBtn">Login</button>
+        <button class="btn btn-register" id="navCreateAccountBtn" >Create Account</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-container">
+      <div class="hero-content">
+        <h1 class="main-title">Learning<br><span class="title-bluegreen">Hub</span></h1>
+        
+        <p class="description">
+        Learning Hub is a modern, student-centered web application designed to streamline academic growth and task management. It provides learners with an intuitive dashboard featuring real-time progress tracking, upcoming assignment schedules, direct support session booking, and essential learning resources—all in one centralized platform.
+        </p>
+        
+        <div class="button-group">
+          <!--<button class="btn btn-primary" id="getStartedBtn">Get Started</button>-->
+          <button class="btn btn-outline" id="learnMoreBtn">Learn More</button>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="../IMAGES/Learning Hub1.jpg">
+      </div>
+
+    </section>
+    
+<script type="module">
+    import { auth, database } from "./firebase-config.js";
+
+    console.log("Authentication is ready:", auth);
+    console.log("Database is ready:", database);
+</script>
+
+<script src="../JAVASCRIPT/index.js"></script>
+</body>
+</html>

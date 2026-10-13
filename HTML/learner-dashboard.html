@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="../CSS/dashboard.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="top">
+      <div class="logo">
+        <span>LEARNING HUB</span>
+      </div>
+      <i class="bx bx-menu" id="btn"></i>
+    </div>
+
+    <ul>
+      <li>
+        <a href="learner-dashboard.html">
+          <i class="bx bxs-grid-alt"></i>
+          <span class="nav-item">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="task.html">
+          <i class="bx bx-task"></i>
+          <span class="nav-item">Task</span>
+        </a>
+      </li>
+      <li>
+        <a href="support.html">
+          <i class="bx bx-user-voice"></i>
+          <span class="nav-item">Support</span>
+        </a>
+      </li>
+      <li>
+        <a href="progress.html">
+          <i class="bx bx-bar-chart-alt-2"></i>
+          <span class="nav-item">Progress</span>
+        </a>
+      </li>
+      <li>
+        <a href="mini-game.html">
+          <i class="bx bx-paper-plane"></i>
+          <span class="nav-item">Mini-Game</span>
+        </a>
+      </li>
+      <li>
+        <a href="summary.html">
+          <i class="bx bx-home-alt"></i>
+          <span class="nav-item">Summary</span>
+        </a>
+      </li>
+      <li>
+        <a href="settings.html">
+          <i class="bx bx-cog"></i>
+          <span class="nav-item">Settings</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <div class="dashboard-wrapper">
+    <header class="top-nav">
+      <button class="notification-btn" onclick="toggleNotifications()" title="Notifications" aria-label="Notifications">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F80ED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+        <div id="notificationDot" class="notification-dot"></div>
+      </button>
+      <div id="notificationPopup" class="notification-popup">
+        <h4>Notifications</h4>
+        <div class="notification-item">Your support session reminder is ready.</div>
+        <div class="notification-item">Two tasks still need your attention this week.</div>
+        <div class="notification-item">Keep pushing your progress forward.</div>
+      </div>
+    </header>
+
+    <main class="main-panel">
+      <section class="welcome-header">
+        <h1 id="dashboardWelcomeTitle">Welcome back!</h1>
+        <p>Here's an overview of your learning progress.</p>
+      </section>
+
+      <div class="dashboard-grid">
+        <div class="grid-col left-col">
+          <div class="card stats-card">
+            <div class="stat-item">
+              <span class="stat-title">Total Task</span>
+              <strong id="statTotal" class="stat-number">0</strong>
+              <div id="barTotal" class="accent-bar bar-amber"></div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-title">Pending Task</span>
+              <strong id="statPending" class="stat-number">0</strong>
+              <div id="barPending" class="accent-bar bar-blue"></div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-title">Progress</span>
+              <strong id="statProgressBadge" class="stat-number">0%</strong>
+              <div id="barProgress" class="accent-bar bar-teal"></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Coming up</div>
+            <div class="grey-row">
+              <div>
+                <div id="upcomingTask1Title" class="task-title-text">Nothing here yet</div>
+                <div id="upcomingTask1Date" class="task-date-text">-</div>
+              </div>
+            </div>
+
+            <div class="grey-row">
+              <div>
+                <div id="upcomingTask2Title" class="task-title-text">Nothing here yet</div>
+                <div id="upcomingTask2Date" class="task-date-text">-</div>
+              </div>
+            </div>
+
+            <div class="grey-row">
+              <div>
+                <div class="task-title-text">Your next session</div>
+                <div id="nextSessionDateText" class="task-date-text">No session booked yet</div>
+              </div>
+              <button class="btn btn-orange" onclick="openPickerModal()">Book a session</button>
+            </div>
+
+            <div style="text-align: center; margin-top: 15px;">
+              <button class="btn-link" onclick="openTasksModal()">See all tasks</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-col right-col">
+          <div class="card support-card">
+            <h2>Support</h2>
+            <div class="support-row action">
+              <span>Next Session</span>
+              <button class="btn btn-orange" onclick="openPickerModal()">Book Session</button>
+            </div>
+            <div class="support-row">
+              <span><i class="bx bx-user"></i> Next Session</span>
+              <span id="supportNextSessionText" class="date">Next session: none booked yet</span>
+            </div>
+            <div class="support-row action">
+              <span><i class="bx bx-lock-alt"></i> Book Support</span>
+              <button class="link-btn" onclick="openPickerModal()">[View Bookings]</button>
+            </div>
+          </div>
+
+          <div class="card chart-card">
+            <h2>Learning Progress</h2>
+            <div class="chart-flex">
+              <div class="chart-legend">
+                <div class="legend-item">
+                  <span class="dot dot-blue"></span>
+                  <div>
+                    <small>Pending Tasks</small>
+                    <strong id="legendTotal">0</strong>
+                  </div>
+                </div>
+                <div class="legend-item">
+                  <span class="dot dot-teal"></span>
+                  <div>
+                    <small>Progress</small>
+                    <strong id="legendPending">0</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="circle-chart-container">
+                <svg class="circle-chart" width="120" height="120" viewBox="0 0 36 36">
+                  <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path id="svgCircleBar" class="circle-bar-teal" stroke-dasharray="42, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <div class="circle-text">
+                  <div id="circlePercentText" class="circle-percentage">0%</div>
+                  <div class="circle-label">Done</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="tasksModal" class="modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>All tasks</h3>
+        <button class="close-btn" onclick="closeTasksModal()" aria-label="Close tasks">×</button>
+      </div>
+      <div id="tasksListContainer" class="task-list-container"></div>
+    </div>
+  </div>
+
+  <div id="pickerModal" class="modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Book a session</h3>
+        <button class="close-btn" onclick="closePickerModal()" aria-label="Close booking">×</button>
+      </div>
+
+      <div class="picker-grid">
+        <div class="picker-column">
+          <button class="picker-arrow" onclick="changePickerVal('day', -1)">▲</button>
+          <div id="dayPrev" class="picker-value">00</div>
+          <div id="dayCurr" class="picker-value current">00</div>
+          <div id="dayNext" class="picker-value">00</div>
+          <button class="picker-arrow" onclick="changePickerVal('day', 1)">▼</button>
+        </div>
+
+        <div class="picker-column">
+          <button class="picker-arrow" onclick="changePickerVal('month', -1)">▲</button>
+          <div id="monthPrev" class="picker-value">Jan</div>
+          <div id="monthCurr" class="picker-value current">Jan</div>
+          <div id="monthNext" class="picker-value">Feb</div>
+          <button class="picker-arrow" onclick="changePickerVal('month', 1)">▼</button>
+        </div>
+
+        <div class="picker-column">
+          <button class="picker-arrow" onclick="changePickerVal('year', -1)">▲</button>
+          <div id="yearPrev" class="picker-value">2025</div>
+          <div id="yearCurr" class="picker-value current">2026</div>
+          <div id="yearNext" class="picker-value">2027</div>
+          <button class="picker-arrow" onclick="changePickerVal('year', 1)">▼</button>
+        </div>
+
+        <div class="picker-column">
+          <button class="picker-arrow" onclick="changePickerVal('hour', -1)">▲</button>
+          <div id="hourPrev" class="picker-value">00</div>
+          <div id="hourCurr" class="picker-value current">10</div>
+          <div id="hourNext" class="picker-value">00</div>
+          <button class="picker-arrow" onclick="changePickerVal('hour', 1)">▼</button>
+        </div>
+
+        <div class="picker-column">
+          <button class="picker-arrow" onclick="changePickerVal('minute', -5)">▲</button>
+          <div id="minutePrev" class="picker-value">00</div>
+          <div id="minuteCurr" class="picker-value current">00</div>
+          <div id="minuteNext" class="picker-value">05</div>
+          <button class="picker-arrow" onclick="changePickerVal('minute', 5)">▼</button>
+        </div>
+
+        <div class="picker-column">
+          <button class="picker-arrow" onclick="changePickerVal('ampm', 1)">▲</button>
+          <div id="ampmPrev" class="picker-value">PM</div>
+          <div id="ampmCurr" class="picker-value current">AM</div>
+          <div id="ampmNext" class="picker-value">PM</div>
+          <button class="picker-arrow" onclick="changePickerVal('ampm', 1)">▼</button>
+        </div>
+      </div>
+
+      <div class="picker-actions">
+        <button class="btn btn-orange" onclick="saveBooking()">Confirm booking</button>
+        <button class="btn btn-secondary" onclick="resetPickerToToday()">Reset</button>
+      </div>
+
+      <div class="booking-list">
+        <h4>Your bookings</h4>
+        <div id="bookingsListContainer"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-database-compat.js"></script>
+  <script src="../JAVASCRIPT/theme.js"></script>
+  <script src="../JAVASCRIPT/dashboard.js"></script>
+</body>
+</html>

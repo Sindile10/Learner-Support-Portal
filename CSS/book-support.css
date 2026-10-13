@@ -1,0 +1,116 @@
+/* 1. Page background styling with a dotted pattern */
+body {
+  margin: 0;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6fb;
+  background-image: radial-gradient(#ccc 1px, transparent 1px);
+  background-size: 16px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 2. Main card box wrapper */
+.card-wrapper {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* 3. Title styling */
+.card-title {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #1a202c;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* 4. Form container styling */
+.form-container {
+  background-color: #f8fafc;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+/* 5. Field labels styling */
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #334155;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+
+/* Remove extra top margin for the very first label */
+.form-label:first-child {
+  margin-top: 0;
+}
+
+/* 6. Inputs and Select elements styling */
+.form-control {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #1e293b;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: #00a8e8;
+}
+
+/* Styling for text area */
+textarea.form-control {
+  height: 80px;
+  resize: vertical;
+}
+
+/* 7. Action buttons layout and styling */
+.button-group {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  flex: 1;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Cancel button styling */
+.btn-cancel {
+  background-color: #f1f5f9;
+  color: #334155;
+}
+
+.btn-cancel:hover {
+  background-color: #e2e8f0;
+}
+
+/* Primary submit button styling */
+.btn-submit {
+  background-color: #1da1f2;
+  color: #ffffff;
+}
+
+.btn-submit:hover {
+  background-color: #0c8cdb;
+}

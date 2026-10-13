@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Bookings</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/support-bookings.css">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="top">
+            <div class="logo"><span>LEARNING HUB</span></div>
+            <i class="bx bx-menu" id="btn" aria-label="Toggle navigation"></i>
+        </div>
+        <ul>
+            <li><a href="assessor-dashboard.html"><i class="bx bxs-grid-alt"></i><span>Dashboard</span></a></li>
+            <li class="active"><a href="support-bookings.html"><i class="bx bx-user-voice"></i><span>Support</span></a></li>
+            <li><a href="settings.html"><i class="bx bx-cog"></i><span>Settings</span></a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="left-top"><span class="logo-mark">🎓</span><h3>Learning Hub</h3></div>
+            <div class="right-top">
+                <button id="notifBtn" class="notif"><i class="bx bx-bell"></i> <span id="notifCount" class="count">3</span> Notifications</button>
+                <div class="user-top" id="topName"><i class="bx bx-user-circle"></i> <span>JOHN</span> <i class="bx bx-chevron-down"></i></div>
+            </div>
+        </header>
+
+        <section class="page-title">
+            <div class="welcome-icon"><i class="bx bx-book-open"></i></div>
+            <div>
+                <p>Booking details</p>
+                <h2>Support Bookings</h2>
+            </div>
+        </section>
+
+        <section class="main booking-layout">
+            <div class="left-col">
+                <div class="detail-card card">
+                    <div class="row">
+                        <div class="field-box">
+                            <label>Request</label>
+                            <b id="reqName">LEANER</b>
+                        </div>
+                        <div class="field-box">
+                            <label>Type</label>
+                            <b id="typeName">SINDILE</b>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="block">
+                        <label>Topic</label>
+                        <b id="topicName">JAVASCRIPT</b>
+                    </div>
+                    <hr>
+                    <div class="block">
+                        <label>Date</label>
+                        <b id="dateName">20 AUG 2016</b>
+                    </div>
+                </div>
+
+                <div class="detail-card card">
+                    <div class="notes-box">
+                        <div class="notes-top">
+                            <i class="bx bx-file"></i>
+                            <label>Notes</label>
+                        </div>
+                        <p id="notesText">I need help with login function</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <div class="small-card">
+                    <div class="icon gray"><i class="bx bx-time-five"></i></div>
+                    <div class="info">
+                        <label>Current Status</label>
+                        <div class="status-box" id="currentStatus">In Progress</div>
+                    </div>
+                </div>
+
+                <div class="small-card">
+                    <div class="icon green"><i class="bx bx-refresh"></i></div>
+                    <div class="info">
+                        <label>Update Status</label>
+                        <select id="statusSelect" class="green-btn">
+                            <option value="In Progress">In Progress</option>
+                            <option value="APPROVED" selected>APPROVED</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="small-card">
+                    <div class="icon purple"><i class="bx bx-calendar-x"></i></div>
+                    <div class="info">
+                        <label>Close Bookings</label>
+                        <button id="closeBtn" class="white-btn">Close Booking</button>
+                    </div>
+                </div>
+
+                <div class="small-card">
+                    <div class="icon blue"><i class="bx bx-user"></i></div>
+                    <div class="info">
+                        <label>View Learner Profile</label>
+                        <button id="viewBtn" class="white-btn">View Profile</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <p id="msg"></p>
+    </main>
+
+    <div id="notifPopup" class="popup hidden">
+        <div class="popup-box">
+            <h3>Notifications</h3>
+            <div id="notifList" class="notif-list"></div>
+            <button id="closeNotif" class="close-btn">Close</button>
+        </div>
+    </div>
+
+    <div id="profilePopup" class="popup hidden">
+        <div class="popup-box">
+            <div class="popup-header">
+                <h3>Learner Profile</h3>
+                <button id="closeProfile">×</button>
+            </div>
+            <hr>
+            <p><b>Name:</b> <span id="pName">Sindile</span></p>
+            <p><b>Email:</b> sindile@learner.com</p>
+            <p><b>Course:</b> JavaScript</p>
+            <p><b>Bookings:</b> <span id="pCount">1</span></p>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-database-compat.js"></script>
+    <script src="../JAVASCRIPT/support-bookings.js"></script>
+    <script>
+        document.getElementById('btn').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+        });
+    </script>
+</body>
+</html>
+

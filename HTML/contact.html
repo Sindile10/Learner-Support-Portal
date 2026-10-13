@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="../CSS/contact.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">LEARNING HUB</div>
+      
+      <div class="nav-links">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="aboutUs.html" class="nav-item">About Us</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+        <button class="btn btn-login" id="navLoginBtn">Login</button>
+        <button class="btn btn-register" id="navCreateAccountBtn" >Create Account</button>
+      </div>
+    </nav>
+  </header>
+  
+  <div class="contact-box">
+    <h2>Get in touch</h2>
+    <p class="sub">Have something to ask? Fill the form, I'll reply soon.</p>
+
+    <form id="contactForm">
+      <div class="field">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="e.g. Sindile" />
+        <span class="error-msg" id="nameError">Please enter your name</span>
+      </div>
+
+      <div class="field">
+        <label for="email">Email Address</label>
+        <input type="text" id="email" placeholder="you@example.com" />
+        <span class="error-msg" id="emailError">Enter a valid email</span>
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Write your message here..."></textarea>
+        <span class="error-msg" id="messageError">Message can't be empty</span>
+      </div>
+
+      <button type="submit" class="btn">Send Message</button>
+      <div id="success">Thanks! Your message was sent.</div>
+    </form>
+  </div>
+
+  <script src="../JAVASCRIPT/index.js"></script>
+</body>
+</html>
