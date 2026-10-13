@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Hub - Summary</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="../CSS/summary.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="top">
+      <div class="logo">LEARNING HUB</div>
+      <i class="bx bx-menu" id="btn"></i>
+    </div>
+
+    <ul>
+      <li><a href="learner-dashboard.html"><i class="bx bxs-grid-alt"></i><span>Dashboard</span></a></li>
+      <li><a href="task.html"><i class="bx bx-task"></i><span>Task</span></a></li>
+      <li><a href="support.html"><i class="bx bx-user-voice"></i><span>Support</span></a></li>
+      <li><a href="progress.html"><i class="bx bx-bar-chart-alt-2"></i><span>Progress</span></a></li>
+      <li><a href="mini-game.html"><i class="bx bx-paper-plane"></i><span>Mini-Game</span></a></li>
+      <li class="active"><a href="summary.html"><i class="bx bx-home-alt"></i><span>Summary</span></a></li>
+      <li><a href="settings.html"><i class="bx bx-cog"></i><span>Settings</span></a></li>
+    </ul>
+  </aside>
+
+  <div class="dashboard-wrapper">
+    <header class="top-nav">
+      <button class="notification-btn" title="Notifications" aria-label="Notifications">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F80ED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+        <div class="notification-dot"></div>
+      </button>
+    </header>
+
+    <main class="main-panel">
+      <section class="welcome-header">
+        <h1>Progress Summary</h1>
+        <p>Review your learning progress and achievements.</p>
+      </section>
+
+      <div class="stats-grid">
+        <div class="stat-card blue">
+          <div class="stat-title">Total Tasks</div>
+          <div class="stat-value" id="cardTotal">0</div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-title">Completed</div>
+          <div class="stat-value" id="cardCompleted">0 Task</div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-title">Pending</div>
+          <div class="stat-value" id="cardPending">0 Task</div>
+        </div>
+        <div class="stat-card purple">
+          <div class="stat-title">Progress</div>
+          <div class="stat-value" id="cardProgress">0%</div>
+        </div>
+      </div>
+
+      <section class="card progress-card">
+        <h2>Learning Progress</h2>
+        <div class="progress-layout">
+          <div class="legend-box">
+            <div class="legend-row">
+              <span class="dot dot-blue"></span>
+              <div>
+                <div class="legend-text">Total Tasks</div>
+                <div class="legend-val" id="graphTotalText">0</div>
+              </div>
+            </div>
+            <div class="legend-row">
+              <span class="dot dot-teal"></span>
+              <div>
+                <div class="legend-text">Pending Tasks</div>
+                <div class="legend-val" id="graphPendingText">0</div>
+              </div>
+            </div>
+            <div class="legend-row">
+              <span class="dot dot-green"></span>
+              <div>
+                <div class="legend-text">Progress</div>
+                <div class="legend-val" id="graphPercentText">0%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="graph-box">
+            <svg width="220" height="220" viewBox="0 0 220 220" aria-label="Progress chart">
+              <circle class="ring-bg" cx="110" cy="110" r="90"></circle>
+              <circle id="ringTotal" class="ring-bar ring-total" cx="110" cy="110" r="90" stroke-dasharray="565" stroke-dashoffset="0"></circle>
+
+              <circle class="ring-bg" cx="110" cy="110" r="70"></circle>
+              <circle id="ringPending" class="ring-bar ring-pending" cx="110" cy="110" r="70" stroke-dasharray="440" stroke-dashoffset="0"></circle>
+
+              <circle class="ring-bg" cx="110" cy="110" r="50"></circle>
+              <circle id="ringProgress" class="ring-bar ring-progress" cx="110" cy="110" r="50" stroke-dasharray="314" stroke-dashoffset="0"></circle>
+            </svg>
+
+            <div class="graph-center-text">
+              <div class="center-percent" id="centerPercent">0%</div>
+              <div class="center-label">Progress</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card overview-card">
+        <h2>Task Overview</h2>
+        <div class="table-container">
+          <div class="table-row"><span>Completed Tasks</span><strong id="tblCompleted">0</strong></div>
+          <div class="table-row"><span>Pending Tasks</span><strong id="tblPending">0</strong></div>
+          <div class="table-row border-none"><span>Overdue Tasks</span><strong id="tblOverdue">0</strong></div>
+        </div>
+      </section>
+
+      <section class="card support-card">
+        <h2>Support Activity</h2>
+        <div class="table-container">
+          <div class="table-row"><span>Support Sessions Booked</span><strong>5</strong></div>
+          <div class="table-row"><span>Sessions Completed</span><strong>2</strong></div>
+          <div class="table-row border-none"><span>Cancelled Session</span><strong>1</strong></div>
+        </div>
+      </section>
+
+      <div class="status-card" id="statusMessage">Good progress! Keep working on your remaining tasks.</div>
+
+      <section class="card task-card">
+        <div class="task-header">
+          <h2>Manage Your Learning Tasks</h2>
+          <button class="btn btn-add" type="button" onclick="addNewTask()">+ Add New Task</button>
+        </div>
+        <div id="taskList" class="task-list"></div>
+      </section>
+
+      <div class="print-row">
+        <button class="btn btn-print" type="button" onclick="window.print()">Print Summary</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="../JAVASCRIPT/theme.js"></script>
+  <script src="../JAVASCRIPT/summary.js"></script>
+</body>
+</html>

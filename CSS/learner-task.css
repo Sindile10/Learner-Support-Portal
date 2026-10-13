@@ -1,0 +1,265 @@
+body {
+    background: #a3edda;
+    display: flex;
+    min-height: 100vh;
+    padding: 24px;
+    gap: 24px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.table-panel {
+    background: #f8fafc;
+    border: 2px solid #0066ff;
+    border-radius: 16px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.filters {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.search-box,
+.date-box {
+    flex: 1;
+    min-width: 180px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1d4ed8;
+}
+
+.search-box input,
+.date-box select {
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+    font-size: 0.9rem;
+    color: #1f2937;
+}
+
+.table-wrap {
+    border: 1px solid #dbeafe;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.table-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-wrap thead {
+    background: #eef4ff;
+}
+
+.table-wrap th {
+    padding: 12px 14px;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: #475569;
+    letter-spacing: 0.05em;
+    text-align: left;
+}
+
+.table-wrap td {
+    padding: 14px;
+    border-top: 1px solid #edf2f7;
+    font-size: 0.85rem;
+    color: #1f2937;
+    vertical-align: middle;
+}
+
+.learner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.learner .pic {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #dbeafe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.badge.green {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.badge.blue {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.badge.light {
+    background: #e0f2fe;
+    color: #0c4a6e;
+}
+
+.dots {
+    cursor: pointer;
+    font-weight: bold;
+    color: #475569;
+    font-size: 1.3rem;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    font-size: 0.76rem;
+    color: #64748b;
+    border-top: 1px solid #edf2f7;
+    background: #ffffff;
+}
+
+.pages {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pages button {
+    border: 1px solid #dbeafe;
+    background: #ffffff;
+    color: #1d4ed8;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.pages button.active {
+    background: #1e5eff;
+    color: #ffffff;
+    border-color: #1e5eff;
+}
+
+.status-copy {
+    font-size: 11px;
+    color: #64748b;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.popup.hidden {
+    display: none;
+}
+
+.popup-box {
+    background: #ffffff;
+    border: 2px solid #0066ff;
+    border-radius: 16px;
+    padding: 18px 18px 16px;
+    width: min(320px, 90vw);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.15);
+}
+
+.popup-box h3 {
+    font-size: 1.15rem;
+    color: #111827;
+}
+
+.popup-box p {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-top: 6px;
+}
+
+.popup-box hr {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 12px 0;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #0066ff;
+    background: #ffffff;
+    color: #0066ff;
+    font-weight: 600;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.btn.red {
+    border-color: #dc2626;
+    color: #dc2626;
+}
+
+.btn.gray {
+    border-color: #64748b;
+    color: #64748b;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex: 0 0 auto;
+    }
+
+    .main-content {
+        min-width: 0;
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+
+    .bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+

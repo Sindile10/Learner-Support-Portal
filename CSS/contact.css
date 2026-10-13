@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+  color: #ffffff;
+   background-size: cover;
+    font-family: Helvetica, 'Arial Narrow Bold', sans-serif;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    margin: 0%;
+}
+
+header {
+  background-color: rgb(40, 153, 119);
+  border-radius: 10px;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #1a365d;
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #4a5568;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+ color: #2563eb;
+}
+
+.btn {
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+
+.menu-btn {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* contact box */
+.contact-box {
+  background: #ffffff;
+  width: 100%;
+  max-width: 480px;
+  padding: 32px;
+  border-radius: 16px;
+  border: 2px solid #2563eb;
+  margin: 60px auto;
+}
+
+.contact-box h2 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.sub {
+  color: #000000;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 12px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  background: #ffffff;
+  border: 2px solid #2563eb;
+  color: rgb(0, 0, 0);
+  padding: 12px 14px;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: #6c7bff;
+}
+
+.field textarea {
+  resize: none;
+  height: 110px;
+}
+
+.error-msg {
+  color: #ff0000;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none;
+}
+
+.btn {
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-login {
+  background-color:  rgb(40, 153, 119);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-login:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-register {
+  background-color:  rgb(40, 153, 119);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-register:hover {
+  background-color: #1d4ed8;
+}
+
+#success {
+  background: #1a3a2a;
+  border: 1px solid #2e6b4a;
+  color: #7dffb2;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 16px;
+  font-size: 14px;
+  display: none;
+  text-align: center;
+}

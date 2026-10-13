@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Hub - Login</title>
+  <link rel="stylesheet" href="../CSS/login.css">
+</head>
+<body>
+
+  <div class="login-box">
+    <form id="authForm" action="">
+      <h1>Learning Hub</h1>
+      <h2>Welcome Back</h2>
+
+      <div class="input-box">
+        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+        <input type="email" id="email" required>
+        <label>Email</label>
+      </div>
+      <span class="error-msg" id="emailError"></span>
+
+      <div class="input-box">
+        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+        <input type="password" id="password" required>
+        <label>Password</label>           
+      </div>
+      <span class="error-msg" id="passError"></span>
+
+      <div class="remember-forgot">
+        <a href="forgot-password.html">Forgot Password?</a>
+      </div>
+      <div class="login-btn">
+        <button type="submit" id="submitBtn">Login</button>
+      </div>
+      <div class="register-link">
+        <p>Don't have an account? <a href="create-account.html">Create Account</a></p>
+      </div>
+    </form>
+  </div>
+  
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script type="module" src="../JAVASCRIPT/login.js"></script>
+</body>
+</html>
+

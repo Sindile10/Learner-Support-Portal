@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Hub - Settings</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="../CSS/settings.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="top">
+      <div class="logo">
+        <span>LEARNING HUB</span>
+      </div>
+      <i class="bx bx-menu" id="btn"></i>
+    </div>
+
+    <ul>
+      <li>
+        <a href="learner-dashboard.html"><i class="bx bxs-grid-alt"></i><span>Dashboard</span></a>
+      </li>
+      <li>
+        <a href="task.html"><i class="bx bx-task"></i><span>Task</span></a>
+      </li>
+      <li>
+        <a href="support.html"><i class="bx bx-user-voice"></i><span>Support</span></a>
+      </li>
+      <li>
+        <a href="progress.html"><i class="bx bx-bar-chart-alt-2"></i><span>Progress</span></a>
+      </li>
+      <li>
+        <a href="mini-game.html"><i class="bx bx-paper-plane"></i><span>Mini-Game</span></a>
+      </li>
+      <li>
+        <a href="summary.html"><i class="bx bx-home-alt"></i><span>Summary</span></a>
+      </li>
+      <li class="active">
+        <a href="settings.html"><i class="bx bx-cog"></i><span>Settings</span></a>
+      </li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+    <div class="banner-card">
+      <h2>Manage your account and portal preferences.</h2>
+      <p>Update your personal information, notification settings, and more.</p>
+    </div>
+
+    <div class="settings-list">
+      <div class="setting-card" onclick="openSettingPanel('Account')">
+        <div class="setting-info">
+          <div class="setting-title">Account</div>
+          <div class="setting-desc">View and update your account details and portal preferences.</div>
+        </div>
+        <div class="arrow-indicator">&gt;</div>
+      </div>
+
+      <div class="setting-card" onclick="openSettingPanel('Notifications')">
+        <div class="setting-info">
+          <div class="setting-title">Notifications</div>
+          <div class="setting-desc">Manage your notification settings and preferences.</div>
+        </div>
+        <div class="arrow-indicator">&gt;</div>
+      </div>
+
+      <div class="setting-card" onclick="openSettingPanel('Appearance')">
+        <div class="setting-info">
+          <div class="setting-title">Appearance</div>
+          <div class="setting-desc">Customize the look and feel of your portal.</div>
+        </div>
+        <div class="arrow-indicator">&gt;</div>
+      </div>
+
+      <div class="setting-card" onclick="openSettingPanel('Privacy & Security')">
+        <div class="setting-info">
+          <div class="setting-title">Privacy &amp; Security</div>
+          <div class="setting-desc">Manage your privacy settings and keep your account secure.</div>
+        </div>
+        <div class="arrow-indicator">&gt;</div>
+      </div>
+
+      <div class="setting-card" onclick="logoutAccount()">
+        <div class="setting-info">
+          <div class="setting-title">Log out</div>
+          <div class="setting-desc">Sign out of your account and return to the login page.</div>
+        </div>
+        <div class="arrow-indicator">&gt;</div>
+      </div>
+    </div>
+
+    <div class="panel-card" id="detailPanel" style="display: none;">
+      <h3 id="panelTitle" class="panel-heading">Setting Details</h3>
+      <div id="panelBody" class="panel-body"></div>
+    </div>
+  </main>
+
+  <script src="../JAVASCRIPT/settings.js"></script>
+</body>
+</html>

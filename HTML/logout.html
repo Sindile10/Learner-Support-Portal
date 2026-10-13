@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logging out...</title>
+</head>
+<body>
+  <script>
+    try {
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('selectedRole');
+      localStorage.removeItem('username');
+      localStorage.removeItem('portalTheme');
+      localStorage.removeItem('accountPreferences');
+      localStorage.removeItem('Account Preferences');
+    } catch (error) {
+      console.log('Logout cleanup skipped:', error);
+    }
+
+    window.location.replace('index.html');
+  </script>
+</body>
+</html>

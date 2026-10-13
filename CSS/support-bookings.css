@@ -1,0 +1,492 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #a3edda;
+    display: flex;
+    min-height: 100vh;
+    padding: 24px;
+    gap: 24px;
+}
+
+.sidebar {
+    width: 200px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 2px solid #0066ff;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease, flex-basis 0.3s ease;
+    flex: 0 0 200px;
+}
+
+.sidebar.collapsed {
+    width: 80px;
+    flex-basis: 80px;
+}
+
+.sidebar .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding: 8px 12px;
+}
+
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+    color: #2b3674;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.sidebar.collapsed .logo,
+.sidebar.collapsed ul li a span {
+    display: none;
+}
+
+.sidebar.collapsed .top {
+    justify-content: center;
+    padding-inline: 0;
+}
+
+.sidebar.collapsed ul li a {
+    justify-content: center;
+    padding: 14px 0;
+}
+
+#btn {
+    color: #0026ff;
+    font-size: 1.35rem;
+    cursor: pointer;
+}
+
+.sidebar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    color: #0026ff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.sidebar ul li a i {
+    font-size: 1.2rem;
+}
+
+.sidebar ul li.active a {
+    background-color: #38b6ff;
+    color: #ffffff;
+    border: 2px solid #0066ff;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    background: #ffffff;
+    border: 2px solid #0066ff;
+    border-radius: 20px;
+    padding: 20px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.topbar {
+    min-height: 54px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #dbeafe;
+    color: #2b3674;
+}
+
+.left-top, .right-top, .user-top {
+    display: flex;
+    align-items: center;
+}
+
+.left-top {
+    gap: 10px;
+}
+
+.left-top h3 {
+    font-size: 1rem;
+}
+
+.logo-mark {
+    font-size: 1.35rem;
+}
+
+.right-top {
+    gap: 20px;
+}
+
+.notif, .user-top {
+    border: 0;
+    background: transparent;
+    color: #0026ff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.notif {
+    position: relative;
+}
+
+.count {
+    display: inline-flex;
+    min-width: 18px;
+    height: 18px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #38b6ff;
+    color: #fff;
+    font-size: 0.7rem;
+}
+
+.user-top {
+    gap: 6px;
+}
+
+.page-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f8fafc;
+    border: 2px solid #0066ff;
+    border-radius: 16px;
+    padding: 18px 20px;
+}
+
+.welcome-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 1.5rem;
+}
+
+.page-title p {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.page-title h2 {
+    color: #111827;
+    font-size: 1.5rem;
+    margin-top: 2px;
+}
+
+.booking-layout {
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+.left-col, .right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.left-col {
+    flex: 2;
+}
+
+.right-col {
+    flex: 1;
+}
+
+.detail-card, .small-card {
+    background: #f8fafc;
+    border: 2px solid #0066ff;
+    border-radius: 16px;
+    padding: 18px 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.field-box {
+    flex: 1;
+}
+
+.block {
+    margin-top: 12px;
+}
+
+label {
+    display: block;
+    font-size: 0.72rem;
+    color: #64748b;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+b {
+    font-size: 1rem;
+    color: #1e293b;
+    text-transform: uppercase;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #dbeafe;
+    margin: 14px 0;
+}
+
+.notes-box {
+    background: #f1f5f9;
+    border-radius: 12px;
+    padding: 14px 16px;
+}
+
+.notes-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1d4ed8;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.notes-box p {
+    font-size: 0.96rem;
+    color: #334155;
+}
+
+.small-card {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #1d4ed8;
+}
+
+.icon.gray { background: #e2e8f0; }
+.icon.green { background: #dcfce7; }
+.icon.purple { background: #ede9fe; }
+.icon.blue { background: #dbeafe; }
+
+.info {
+    flex: 1;
+}
+
+.status-box {
+    background: #e0f2fe;
+    color: #0369a1;
+    border-radius: 10px;
+    padding: 8px 10px;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.green-btn {
+    width: 100%;
+    background: #10b981;
+    color: #fff;
+    border: none;
+    padding: 9px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    margin-top: 6px;
+    cursor: pointer;
+}
+
+.white-btn {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #1d4ed8;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    margin-top: 6px;
+    cursor: pointer;
+}
+
+.white-btn:hover {
+    background: #f8fafc;
+}
+
+#msg {
+    font-size: 0.78rem;
+    color: #475569;
+    text-align: center;
+    margin-top: 4px;
+}
+
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.popup.hidden {
+    display: none;
+}
+
+.popup-box {
+    background: #ffffff;
+    border: 2px solid #0066ff;
+    border-radius: 16px;
+    padding: 20px;
+    width: min(360px, calc(100% - 32px));
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-header h3 {
+    color: #1e293b;
+}
+
+#closeProfile {
+    border: none;
+    background: transparent;
+    font-size: 1.8rem;
+    color: #475569;
+    cursor: pointer;
+}
+
+.popup-box p {
+    margin-top: 10px;
+    color: #334155;
+    font-size: 0.9rem;
+}
+
+.notif-list {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+.close-btn {
+    width: 100%;
+    margin-top: 16px;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.popup-box hr {
+    margin: 12px 0 0;
+}
+
+@media (max-width: 900px) {
+    body {
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-basis: auto;
+    }
+
+    .booking-layout {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar, .sidebar.collapsed {
+        width: 100%;
+        flex-basis: auto;
+    }
+
+    .sidebar ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sidebar .logo, .sidebar.collapsed .logo {
+        display: block;
+    }
+
+    .sidebar ul li a span, .sidebar.collapsed ul li a span {
+        display: inline;
+    }
+
+    .sidebar.collapsed ul li a {
+        justify-content: flex-start;
+        padding: 14px 18px;
+    }
+
+    .main-content {
+        padding: 16px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .right-top {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+}
+

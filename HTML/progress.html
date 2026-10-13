@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Hub - Progress</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="../CSS/progress.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="top">
+      <div class="logo">
+        <span>LEARNING HUB</span>
+      </div>
+      <i class="bx bx-menu" id="btn"></i>
+    </div>
+
+    <ul>
+      <li>
+        <a href="learner-dashboard.html"><i class="bx bxs-grid-alt"></i><span>Dashboard</span></a>
+      </li>
+      <li>
+        <a href="task.html"><i class="bx bx-task"></i><span>Task</span></a>
+      </li>
+      <li>
+        <a href="support.html"><i class="bx bx-user-voice"></i><span>Support</span></a>
+      </li>
+      <li class="active">
+        <a href="progress.html"><i class="bx bx-bar-chart-alt-2"></i><span>Progress</span></a>
+      </li>
+      <li>
+        <a href="mini-game.html"><i class="bx bx-paper-plane"></i><span>Mini-Game</span></a>
+      </li>
+      <li>
+        <a href="summary.html"><i class="bx bx-home-alt"></i><span>Summary</span></a>
+      </li>
+      <li>
+        <a href="settings.html"><i class="bx bx-cog"></i><span>Settings</span></a>
+      </li>
+    </ul>
+  </aside>
+
+  <div class="dashboard-wrapper">
+    <header class="top-nav">
+      <button class="notification-btn" id="notifBtn" title="Notifications" aria-label="Notifications">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F80ED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+        <div class="notification-dot"></div>
+      </button>
+    </header>
+
+    <main class="main-panel">
+      <section class="welcome-header">
+        <h1>Progress Report</h1>
+        <p>Review your learning tasks, completed work, and overall momentum.</p>
+      </section>
+
+      <div class="card stats-card">
+        <div class="stat-item">
+          <span class="stat-title">Total Task</span>
+          <strong id="cardTotal" class="stat-number">0</strong>
+          <div class="accent-bar bar-amber"></div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-title">Completed</span>
+          <strong id="cardCompleted" class="stat-number">0 Task</strong>
+          <div class="accent-bar bar-teal"></div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-title">Pending</span>
+          <strong id="cardPending" class="stat-number">0 Task</strong>
+          <div class="accent-bar bar-blue"></div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-title">Progress</span>
+          <strong id="cardProgress" class="stat-number">0%</strong>
+          <div class="accent-bar bar-sky"></div>
+        </div>
+      </div>
+
+      <div class="card progress-section">
+        <div class="section-title">Overall Progress</div>
+
+        <div class="progress-content">
+          <div class="legend-list">
+            <div class="legend-item">
+              <span class="dot dot-blue"></span>
+              <div>
+                <div class="legend-label">Total Tasks</div>
+                <div class="legend-value" id="graphTotalText">0</div>
+              </div>
+            </div>
+            <div class="legend-item">
+              <span class="dot dot-teal"></span>
+              <div>
+                <div class="legend-label">Pending Tasks</div>
+                <div class="legend-value" id="graphPendingText">0</div>
+              </div>
+            </div>
+            <div class="legend-item">
+              <span class="dot dot-green"></span>
+              <div>
+                <div class="legend-label">Progress</div>
+                <div class="legend-value" id="graphPercentText">0%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="graph-container">
+            <svg width="220" height="220" viewBox="0 0 220 220" aria-label="Progress chart">
+              <circle class="circle-bg" cx="110" cy="110" r="90" />
+              <circle id="ringTotal" class="ring-bar ring-total" cx="110" cy="110" r="90" stroke-dasharray="565" stroke-dashoffset="0"></circle>
+
+              <circle class="circle-bg" cx="110" cy="110" r="70" />
+              <circle id="ringPending" class="ring-bar ring-pending" cx="110" cy="110" r="70" stroke-dasharray="440" stroke-dashoffset="0"></circle>
+
+              <circle class="circle-bg" cx="110" cy="110" r="50" />
+              <circle id="ringProgress" class="ring-bar ring-progress" cx="110" cy="110" r="50" stroke-dasharray="314" stroke-dashoffset="0"></circle>
+            </svg>
+
+            <div class="graph-center-text">
+              <div class="center-percent" id="centerPercent">0%</div>
+              <div class="center-label">Progress</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card task-overview">
+        <div class="section-title">Task Overview</div>
+        <div id="taskList" class="task-list"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../JAVASCRIPT/theme.js"></script>
+  <script src="../JAVASCRIPT/progress.js"></script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  background: #a3edda;
+}
+
+body.theme-light {
+  background: #a3edda;
+  color: #111827;
+}
+
+body.theme-dark {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+body.theme-dark .sidebar,
+body.theme-dark .top-nav,
+body.theme-dark .main-panel,
+body.theme-dark .card,
+body.theme-dark .notification-popup,
+body.theme-dark .message-card,
+body.theme-dark .messages-list > div,
+body.theme-dark .form-card {
+  background: #1f2937;
+  border-color: #60a5fa;
+  color: #e5e7eb;
+}
+
+body.theme-dark .welcome-header h1,
+body.theme-dark .form-label,
+body.theme-dark .card h2,
+body.theme-dark .message-card strong,
+body.theme-dark .message-card p,
+body.theme-dark .status-text,
+body.theme-dark .message-status {
+  color: #f8fafc;
+}
+
+body.theme-dark .welcome-header p,
+body.theme-dark .notification-item,
+body.theme-dark .message-meta,
+body.theme-dark .form-control::placeholder,
+body.theme-dark .message-card small,
+body.theme-dark .message-status {
+  color: #cbd5e1;
+}
+
+body.theme-dark .form-control,
+body.theme-dark select,
+body.theme-dark textarea,
+body.theme-dark input {
+  background: #111827;
+  border-color: #475569;
+  color: #e5e7eb;
+}
+
+body.theme-dark .btn,
+body.theme-dark .button-group button {
+  color: #ffffff;
+}
+
+.sidebar {
+  width: 200px;
+  background: #ffffff;
+  border: 2px solid #0066ff;
+  border-radius: 20px;
+  padding: 16px;
+  transition: width 0.25s ease;
+}
+
+.sidebar.collapsed {
+  width: 92px;
+}
+
+.sidebar .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.sidebar.collapsed .top {
+  justify-content: center;
+}
+
+.logo {
+  font-weight: 900;
+  color: #2b3674;
+  font-size: 0.85rem;
+}
+
+.sidebar.collapsed .logo {
+  display: none;
+}
+
+.sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar li a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #0026ff;
+  font-weight: 600;
+  transition: padding 0.2s ease;
+}
+
+.sidebar.collapsed li a {
+  justify-content: center;
+  padding: 14px 10px;
+}
+
+.sidebar.collapsed li a span {
+  display: none;
+}
+
+.sidebar li.active a {
+  background: #38b6ff;
+  color: #fff;
+  border: 2px solid #0066ff;
+}
+
+.dashboard-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: flex-end;
+  background: #fff;
+  border: 2px solid #0066ff;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.notification-btn {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #f3f5f9;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f5a623;
+  border: 2px solid #fff;
+}
+
+.notification-popup {
+  position: fixed;
+  top: 72px;
+  right: 24px;
+  width: 280px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e2e8f0;
+  padding: 14px 16px;
+  z-index: 1000;
+  display: none;
+}
+
+.notification-popup.show {
+  display: block;
+}
+
+.notification-popup h4 {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  color: #1e293b;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 5px;
+}
+
+.notification-item {
+  font-size: 0.85rem;
+  color: #475569;
+  padding: 8px 0;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.main-panel {
+  background: #fff;
+  border: 2px solid #0066ff;
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.welcome-header h1 {
+  font-size: 2.5rem;
+  color: #111827;
+}
+
+.welcome-header p {
+  margin-top: 12px;
+  color: #64748b;
+}
+
+.card {
+  background: #f8fafd;
+  border: 2px solid #0066ff;
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+
+.form-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-label {
+  font-weight: 700;
+  color: #334155;
+}
+
+.form-control {
+  width: 100%;
+  border: 1px solid #dfe7f1;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  background: #fff;
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.message-status {
+  min-height: 24px;
+  color: #0f766e;
+  font-weight: 600;
+}
+
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message-item {
+  background: #fff;
+  border: 1px solid #dbeafe;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.message-item p {
+  margin: 8px 0;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.message-item small {
+  color: #64748b;
+}
+
+.empty-state {
+  color: #64748b;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #1d4ed8;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+}
+
+}
+
+.session-details p {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+.session-details strong {
+  color: #ffffff;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* 5. Custom Form Dropdowns */
+.sessions-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.sessions-table th {
+  color: #9ca3af;
+  font-weight: normal;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.sessions-table td {
+  padding: 14px 0;
+  border-bottom: 1px solid #1e293b;
+  vertical-align: middle;
+}
+
+.task-title {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.date-text {
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* CUSTOM STYLED DROPDOWN CONTROL */
+.custom-dropdown {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+  max-width: 180px;
+}
+
+.custom-dropdown:focus {
+  border-color: #3b82f6;
+}
+
+.custom-dropdown option {
+  background-color: #0f172a;
+  color: #ffffff;
+}
+
+/* 6. Buttons Styling */
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn-secondary {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background-color: #334155;
+}
+
+.btn-danger {
+  background-color: #7f1d1d;
+  color: #f87171;
+  border: 1px solid #991b1b;
+}
+
+.btn-danger:hover {
+  background-color: #991b1b;
+  color: #ffffff;
+}
+
+.btn-create {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.btn-create:hover {
+  background-color: #2563eb;
+}
